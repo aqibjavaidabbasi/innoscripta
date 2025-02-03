@@ -66,15 +66,22 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
+                </li>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-register">
+                                <a href="#authentication-POSTapi-register">Register a new user.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-endpoints" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
-                                <a href="#endpoints-POSTapi-register">POST api/register</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
                                 <a href="#endpoints-POSTapi-login">POST api/login</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
@@ -133,11 +140,11 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="authentication">Authentication</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-register">POST api/register</h2>
+                                <h2 id="authentication-POSTapi-register">Register a new user.</h2>
 
 <p>
 </p>
@@ -154,9 +161,10 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"wacjxkwfjzseafgujkm\",
-    \"email\": \"santino.cummerata@example.com\",
-    \"password\": \"V+PJcE^K\\\\%J)CZo\"
+    \"name\": \"John Doe\",
+    \"email\": \"johndoe@example.com\",
+    \"password\": \"secret123\",
+    \"password_confirmation\": \"secret123\"
 }"
 </code></pre></div>
 
@@ -172,9 +180,10 @@ const headers = {
 };
 
 let body = {
-    "name": "wacjxkwfjzseafgujkm",
-    "email": "santino.cummerata@example.com",
-    "password": "V+PJcE^K\\%J)CZo"
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "secret123",
+    "password_confirmation": "secret123"
 };
 
 fetch(url, {
@@ -186,7 +195,23 @@ fetch(url, {
 </span>
 
 <span id="example-responses-POSTapi-register">
-</span>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;User registered successfully!&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;johndoe@example.com&quot;
+    },
+    &quot;access_token&quot;: &quot;1|zXW8y0...&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-register" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-register"></span>:
@@ -263,10 +288,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-register"
-               value="wacjxkwfjzseafgujkm"
+               value="John Doe"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>wacjxkwfjzseafgujkm</code></p>
+<p>The full name of the user. Example: <code>John Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -274,10 +299,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-register"
-               value="santino.cummerata@example.com"
+               value="johndoe@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>santino.cummerata@example.com</code></p>
+<p>The email address of the user. Must be unique. Example: <code>johndoe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -285,14 +310,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-register"
-               value="V+PJcE^K\%J)CZo"
+               value="secret123"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Example: <code>V+PJcE^K\%J)CZo</code></p>
+<p>The user's password. Minimum 8 characters. Example: <code>secret123</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-register"
+               value="secret123"
+               data-component="body">
+    <br>
+<p>Must match the password. Example: <code>secret123</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-POSTapi-login">POST api/login</h2>
 
 <p>
 </p>
@@ -309,8 +349,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"ewell.considine@example.net\",
-    \"password\": \"g::\\\\PIM]#w%\"
+    \"email\": \"qlemke@example.com\",
+    \"password\": \"2tEtd{Y\\/N&lt;7Tn\\\\DD\"
 }"
 </code></pre></div>
 
@@ -326,8 +366,8 @@ const headers = {
 };
 
 let body = {
-    "email": "ewell.considine@example.net",
-    "password": "g::\\PIM]#w%"
+    "email": "qlemke@example.com",
+    "password": "2tEtd{Y\/N&lt;7Tn\\DD"
 };
 
 fetch(url, {
@@ -416,10 +456,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="ewell.considine@example.net"
+               value="qlemke@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>ewell.considine@example.net</code></p>
+<p>Must be a valid email address. Example: <code>qlemke@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -427,10 +467,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value="g::\PIM]#w%"
+               value="2tEtd{Y/N<7Tn\DD"
                data-component="body">
     <br>
-<p>Example: <code>g::\PIM]#w%</code></p>
+<p>Example: <code>2tEtd{Y/N&lt;7Tn\DD</code></p>
         </div>
         </form>
 
@@ -983,7 +1023,93 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;categories&quot;: [
-        &quot;&quot;
+        &quot;Variety&quot;,
+        &quot;Motorsport.com&quot;,
+        &quot;Page Six&quot;,
+        &quot;Financial Times&quot;,
+        &quot;Politico&quot;,
+        &quot;Forbes&quot;,
+        &quot;POLITICO.eu&quot;,
+        &quot;CNN&quot;,
+        &quot;Axios&quot;,
+        &quot;The Verge&quot;,
+        &quot;Associated Press&quot;,
+        &quot;Yahoo Entertainment&quot;,
+        &quot;Gizmodo.com&quot;,
+        &quot;Middle East crisis live&quot;,
+        &quot;Israel&quot;,
+        &quot;Gaza&quot;,
+        &quot;Hamas&quot;,
+        &quot;Donald Trump&quot;,
+        &quot;Benjamin Netanyahu&quot;,
+        &quot;Palestinian territories&quot;,
+        &quot;US news&quot;,
+        &quot;World news&quot;,
+        &quot;Politics&quot;,
+        &quot;UK news&quot;,
+        &quot;Politics live with Andrew Sparrow&quot;,
+        &quot;Keir Starmer&quot;,
+        &quot;Brexit&quot;,
+        &quot;Labour&quot;,
+        &quot;Conservatives&quot;,
+        &quot;European Union&quot;,
+        &quot;Trade policy&quot;,
+        &quot;Foreign policy&quot;,
+        &quot;Trump administration&quot;,
+        &quot;Europe&quot;,
+        &quot;Donald Tusk&quot;,
+        &quot;Bridget Phillipson&quot;,
+        &quot;Education&quot;,
+        &quot;Schools&quot;,
+        &quot;Ofsted&quot;,
+        &quot;Greenland&quot;,
+        &quot;Commonwealth of Nations&quot;,
+        &quot;King Charles III&quot;,
+        &quot;Kemi Badenoch&quot;,
+        &quot;US politics&quot;,
+        &quot;Monarchy&quot;,
+        &quot;Green party&quot;,
+        &quot;Proportional representation&quot;,
+        &quot;Europe live with Jakub Krupa&quot;,
+        &quot;Emmanuel Macron&quot;,
+        &quot;International trade&quot;,
+        &quot;Global economy&quot;,
+        &quot;Transfer window&quot;,
+        &quot;Football&quot;,
+        &quot;Sport&quot;,
+        &quot;Premier League&quot;,
+        &quot;European club football&quot;,
+        &quot;Manchester United&quot;,
+        &quot;US politics live with Chris Stein&quot;,
+        &quot;US politics live&quot;,
+        &quot;Mexico&quot;,
+        &quot;Canada&quot;,
+        &quot;China&quot;,
+        &quot;Republicans&quot;,
+        &quot;Social work&quot;,
+        &quot;Other lives&quot;,
+        &quot;Brighton&quot;,
+        &quot;University of East Anglia&quot;,
+        &quot;Children&quot;,
+        &quot;Nottingham&quot;,
+        &quot;Nottingham Forest&quot;,
+        &quot;England&quot;,
+        &quot;Transgender&quot;,
+        &quot;LGBTQ+ rights&quot;,
+        &quot;Health&quot;,
+        &quot;Cate Blanchett&quot;,
+        &quot;#MeToo movement&quot;,
+        &quot;Film&quot;,
+        &quot;Culture&quot;,
+        &quot;Harvey Weinstein&quot;,
+        &quot;us&quot;,
+        &quot;business&quot;,
+        &quot;world&quot;,
+        &quot;arts&quot;,
+        &quot;style&quot;,
+        &quot;health&quot;,
+        &quot;opinion&quot;,
+        &quot;science&quot;
     ]
 }</code>
  </pre>
@@ -1108,7 +1234,11 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;sources&quot;: []
+    &quot;sources&quot;: [
+        &quot;NewsAPI&quot;,
+        &quot;Guardian&quot;,
+        &quot;NYTimes&quot;
+    ]
 }</code>
  </pre>
     </span>
@@ -1233,7 +1363,77 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;authors&quot;: [
-        &quot;&quot;
+        &quot;Jack Dunn&quot;,
+        &quot;Nick DeGroot&quot;,
+        &quot;Eileen Reslen&quot;,
+        &quot;Tina Moore&quot;,
+        &quot;Joe Miller&quot;,
+        &quot;Alex Rogers&quot;,
+        &quot;James Politi&quot;,
+        &quot;David Cohen&quot;,
+        &quot;Monica Mercuri&quot;,
+        &quot;Zia Weise&quot;,
+        &quot;Billy Stockwell&quot;,
+        &quot;Avery Lotz&quot;,
+        &quot;Rebecca Rubin&quot;,
+        &quot;Daniel Payne&quot;,
+        &quot;Brandon Widder&quot;,
+        &quot;Gary Fineout&quot;,
+        &quot;MATTHEW LEE&quot;,
+        &quot;Jesse Cohen&quot;,
+        &quot;Gizmodo Deals&quot;,
+        &quot;Daniel Lavelle&quot;,
+        &quot;Yohannes Lowe&quot;,
+        &quot;Andrew Sparrow&quot;,
+        &quot;Jakub Krupa&quot;,
+        &quot;Will Magee&quot;,
+        &quot;John Brewin&quot;,
+        &quot;Will Unwin&quot;,
+        &quot;Chris Stein&quot;,
+        &quot;Martin Belam&quot;,
+        &quot;Alex Sutton&quot;,
+        &quot;Jessica Murray Midlands correspondent&quot;,
+        &quot;Hannah Al-Othman North of England correspondent&quot;,
+        &quot;Anna Betts&quot;,
+        &quot;Catherine Shoard&quot;,
+        &quot;Ana Swanson&quot;,
+        &quot;Keith Bradsher&quot;,
+        &quot;Patricia Cohen&quot;,
+        &quot;Erica L. Green&quot;,
+        &quot;Carol Rosenberg&quot;,
+        &quot;Eric Schmitt&quot;,
+        &quot;Michael Crowley&quot;,
+        &quot;Annie Correal&quot;,
+        &quot;Jon Caramanica&quot;,
+        &quot;Joe Coscarelli&quot;,
+        &quot;Caryn Ganz&quot;,
+        &quot;Jon Pareles&quot;,
+        &quot;Lindsay Zoladz&quot;,
+        &quot;Vanessa Friedman&quot;,
+        &quot;Patrick Kingsley&quot;,
+        &quot;Jenny Vrentas&quot;,
+        &quot;Mitch Smith&quot;,
+        &quot;Erin Schaff&quot;,
+        &quot;Soumya Karlamangla&quot;,
+        &quot;Mimi Dwyer&quot;,
+        &quot;Carl Zimmer&quot;,
+        &quot;Claire Moses&quot;,
+        &quot;Isabella Kwai&quot;,
+        &quot;Christine Hauser&quot;,
+        &quot;John Yoon&quot;,
+        &quot;Tim Balk&quot;,
+        &quot;Emmanuel Morgan&quot;,
+        &quot;Gail Collins&quot;,
+        &quot;Bret Stephens&quot;,
+        &quot;Abrahm Lustgarten&quot;,
+        &quot;Catherine Porter&quot;,
+        &quot;S&eacute;gol&egrave;ne Le Stradic&quot;,
+        &quot;Troy Closson&quot;,
+        &quot;J. David Goodman&quot;,
+        &quot;Katrina Miller&quot;,
+        &quot;Jos&eacute; Bautista&quot;,
+        &quot;Amelia Nierenberg&quot;,
+        &quot;Matt Stevens&quot;
     ]
 }</code>
  </pre>
@@ -1359,11 +1559,142 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;current_page&quot;: 1,
-    &quot;data&quot;: [],
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 17,
+            &quot;title&quot;: &quot;Netanyahu on US visit as Hamas says it is ready to negotiate phase two of ceasefire &ndash; Middle East crisis live&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/world/live/2025/feb/03/middle-east-crisis-live-benjamin-netanyahu-israel-gaza-ceasefire-donald-trump&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/a18271bda488f2f0ee5861668d403ec200bb0fb1/0_72_1600_960/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Daniel Lavelle, Yohannes Lowe&quot;,
+            &quot;category&quot;: &quot;Middle East crisis live, Israel, Gaza, Hamas, Donald Trump, Benjamin Netanyahu, Palestinian territories, US news, World news&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:40:27&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;title&quot;: &quot;Keir Starmer says he does not accept UK has to choose between US and EU &ndash; UK politics live&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/politics/live/2025/feb/03/keir-starmer-europe-brexit-donald-trump-latest-politics-news-updates-live&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/2887d8133d6ac1b5b4438a9c679516e2d9e64cf6/160_427_4811_2887/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Andrew Sparrow&quot;,
+            &quot;category&quot;: &quot;Politics, UK news, Politics live with Andrew Sparrow, Keir Starmer, Brexit, Labour, Conservatives, European Union, Donald Trump, Trade policy, Foreign policy, Trump administration, Europe, Donald Tusk, Bridget Phillipson, Education, Schools, Ofsted, Greenland, Commonwealth of Nations, King Charles III, Kemi Badenoch, US news, US politics, Monarchy, Green party, Proportional representation&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:40:13&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;title&quot;: &quot;EU ready to react to &lsquo;unnecessary and stupid&rsquo; tariffs threatened by Trump, leaders say &ndash; Europe live&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/world/live/2025/feb/03/eu-europe-emmanuel-macron-donald-trump-defence-spending-latest-news-updates&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/c1632236dc46fa8784595cf0b37bf6b4e55bf5d0/0_183_6242_3745/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Jakub Krupa&quot;,
+            &quot;category&quot;: &quot;Europe live with Jakub Krupa, Europe, World news, Emmanuel Macron, International trade, Global economy&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:40:02&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;title&quot;: &quot;Transfer deadline day: Tel heading to Tottenham, Gonz&aacute;lez, F&eacute;lix, Ferguson news and latest moves &ndash; live&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/football/live/2025/feb/03/transfer-deadline-day-rashford-tel-chilwell-disasi-live&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/450845bbc1f321af070ee1db704826774f7a516d/278_694_5429_3258/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Will Magee, John Brewin, Will Unwin&quot;,
+            &quot;category&quot;: &quot;Transfer window, Football, Sport, Premier League, European club football, Manchester United&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:37:15&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;title&quot;: &quot;Trump pauses plan to impose 25% tariff on Mexico after Sheinbaum agrees to deploy troops to southern US border &ndash; live&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/us-news/live/2025/feb/03/donald-trump-trade-tariffs-eu-mexico-canada-china-us-politics-live&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/07367dde2fb75d5b9f548a8c1f253c1796dbb0de/1_0_2998_1800/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Chris Stein, Martin Belam&quot;,
+            &quot;category&quot;: &quot;Trump administration, US politics live with Chris Stein, US politics live, US news, World news, Donald Trump, Mexico, Canada, China, European Union, US politics, Republicans&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:35:29&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 22,
+            &quot;title&quot;: &quot;Caroline Reid obituary&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/education/2025/feb/03/caroline-reid-obituary&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/d61bec28813c6e43366ee953d9de4af976d02ddf/0_736_2173_1303/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Alex Sutton&quot;,
+            &quot;category&quot;: &quot;Social work, Other lives, Brighton, University of East Anglia, Children&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:32:58&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 23,
+            &quot;title&quot;: &quot;&lsquo;Free pint when Forest score!&rsquo;: pub loses &pound;1,500 after seven-goal rampage&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/uk-news/2025/feb/03/free-pint-when-forest-score-pub-loses-1500-after-seven-goal-rampage&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/87e47a145ab0aeec92bcaefffec38635db83ee8c/0_68_1600_960/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Jessica Murray Midlands correspondent&quot;,
+            &quot;category&quot;: &quot;Nottingham, Nottingham Forest, UK news, Football&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:28:20&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 24,
+            &quot;title&quot;: &quot;Boy, 15, dies after stabbing incident at Sheffield school&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/uk-news/2025/feb/03/boy-detained-teenager-stabbed-school-sheffield&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/f8f7c3f0523b5779c0a40064a2219a017ac05486/0_216_3196_1918/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Hannah Al-Othman North of England correspondent&quot;,
+            &quot;category&quot;: &quot;UK news, England&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:28:18&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 25,
+            &quot;title&quot;: &quot;US hospitals suspend healthcare for transgender youth after Trump order&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/us-news/2025/feb/03/trans-youth-healthcare-hospitals-trump&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/caedcfe3e692dced4eaa950041218f9f3c0e1b34/0_313_6048_3629/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Anna Betts&quot;,
+            &quot;category&quot;: &quot;Trump administration, US news, Donald Trump, Transgender, LGBTQ+ rights, Health, Children, US politics&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:14:53&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: 26,
+            &quot;title&quot;: &quot;Cate Blanchett: lack of change in Hollywood after #MeToo &lsquo;quite distressing&rsquo;&quot;,
+            &quot;description&quot;: null,
+            &quot;url&quot;: &quot;https://www.theguardian.com/world/2025/feb/03/cate-blanchett-lack-of-change-in-hollywood-after-metoo-quite-distressing&quot;,
+            &quot;image&quot;: &quot;https://media.guim.co.uk/be7e1295b54a160e0c331e839735fc01b8a8e812/59_86_4011_2407/500.jpg&quot;,
+            &quot;source&quot;: &quot;Guardian&quot;,
+            &quot;author&quot;: &quot;Catherine Shoard&quot;,
+            &quot;category&quot;: &quot;Cate Blanchett, #MeToo movement, Film, Culture, Harvey Weinstein&quot;,
+            &quot;published_at&quot;: &quot;2025-02-03 17:13:17&quot;,
+            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
+        }
+    ],
     &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=1&quot;,
-    &quot;from&quot;: null,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 5,
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=5&quot;,
     &quot;links&quot;: [
         {
             &quot;url&quot;: null,
@@ -1376,17 +1707,37 @@ access-control-allow-origin: *
             &quot;active&quot;: true
         },
         {
-            &quot;url&quot;: null,
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
+            &quot;label&quot;: &quot;2&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=3&quot;,
+            &quot;label&quot;: &quot;3&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=4&quot;,
+            &quot;label&quot;: &quot;4&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=5&quot;,
+            &quot;label&quot;: &quot;5&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
             &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
             &quot;active&quot;: false
         }
     ],
-    &quot;next_page_url&quot;: null,
+    &quot;next_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
     &quot;path&quot;: &quot;http://127.0.0.1:8000/api/articles&quot;,
     &quot;per_page&quot;: 10,
     &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: null,
-    &quot;total&quot;: 0
+    &quot;to&quot;: 10,
+    &quot;total&quot;: 48
 }</code>
  </pre>
     </span>
