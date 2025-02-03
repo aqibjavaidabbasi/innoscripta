@@ -1,0 +1,91 @@
+[03-Feb-2025 18:55:28 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.1.31. in /home/rkjhsvob/api.2048gamers.com/vendor/composer/platform_check.php on line 24
+[03-Feb-2025 18:58:48 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 18:59:58 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:00:01 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:01:12 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:01:14 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:01:21 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:01:26 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:01:58 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:03:08 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:07:17 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:08:15 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:08:15 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:08:24 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:12:48 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:15:06 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:16:05 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:18:41 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
+[03-Feb-2025 19:22:24 UTC] PHP Fatal error:  Uncaught Error: Undefined constant "_DIR_" in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php:7
+Stack trace:
+#0 /home/rkjhsvob/api.2048gamers.com/public/index.php(16): require_once()
+#1 {main}
+  thrown in /home/rkjhsvob/api.2048gamers.com/bootstrap/app.php on line 7
