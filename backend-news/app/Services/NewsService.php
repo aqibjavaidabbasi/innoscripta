@@ -90,25 +90,29 @@ class NewsService
             return null;
         }
 
-        $unwantedWords = ['by', 'now', 'earlier', 'in berlin'];
+        // Remove common unwanted words
+        $unwantedWords = ['by', 'now', 'earlier'];
         $author = preg_replace('/\b(' . implode('|', $unwantedWords) . ')\b/i', '', $author);
 
+        // Remove content inside parentheses (e.g., "John Doe (Editor)")
         $author = preg_replace('/\s*\([^)]*\)/', '', $author);
-    
+
+        // Remove "in <CityName>" (Handles any city name)
+        $author = preg_replace('/\sin\s+[A-Z][a-z]+(?:\s[A-Z][a-z]+)*/', '', $author);
+
+        // Convert "and" into ", "
         $author = preg_replace('/\s+and\s+/', ', ', $author);
-    
+
+        // Remove duplicate commas
         $author = preg_replace('/,\s*,+/', ',', $author);
-    
+
+        // Trim excessive spaces and any trailing commas
         $author = preg_replace('/\s+/', ' ', trim($author));
-    
         $author = preg_replace('/^,|,$/', '', $author);
-    
+
         return $author;
     }
-    
-    
-    
-    
+
     
 
 }

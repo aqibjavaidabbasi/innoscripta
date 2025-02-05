@@ -71,8 +71,14 @@
                     <a href="#authentication">Authentication</a>
                 </li>
                                     <ul id="tocify-subheader-authentication" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-register">
-                                <a href="#authentication-POSTapi-register">Register a new user.</a>
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-register">
+                                <a href="#authentication-POSTapi-v1-register">Register a new user.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-login">
+                                <a href="#authentication-POSTapi-v1-login">Authenticate and log in a user.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-logout">
+                                <a href="#authentication-POSTapi-v1-logout">Log out the authenticated user.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -81,35 +87,50 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                                <a href="#endpoints-POSTapi-login">POST api/login</a>
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-user">
+                                <a href="#endpoints-GETapi-v1-user">GET api/v1/user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-logout">
-                                <a href="#endpoints-POSTapi-logout">POST api/logout</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-filters" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="filters">
+                    <a href="#filters">Filters</a>
+                </li>
+                                    <ul id="tocify-subheader-filters" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="filters-GETapi-v1-filters-categories">
+                                <a href="#filters-GETapi-v1-filters-categories">Get all unique categories.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
-                                <a href="#endpoints-GETapi-user">GET api/user</a>
+                                                                                <li class="tocify-item level-2" data-unique="filters-GETapi-v1-filters-sources">
+                                <a href="#filters-GETapi-v1-filters-sources">Get all unique sources.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-user-preferences">
-                                <a href="#endpoints-POSTapi-user-preferences">POST api/user/preferences</a>
+                                                                                <li class="tocify-item level-2" data-unique="filters-GETapi-v1-filters-authors">
+                                <a href="#filters-GETapi-v1-filters-authors">Get all unique authors.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user-preferences">
-                                <a href="#endpoints-GETapi-user-preferences">GET api/user/preferences</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-news" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="news">
+                    <a href="#news">News</a>
+                </li>
+                                    <ul id="tocify-subheader-news" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="news-GETapi-v1-personalized-feed">
+                                <a href="#news-GETapi-v1-personalized-feed">Get a personalized news feed based on user preferences.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-filters-categories">
-                                <a href="#endpoints-GETapi-filters-categories">GET api/filters/categories</a>
+                                                                                <li class="tocify-item level-2" data-unique="news-GETapi-v1-articles">
+                                <a href="#news-GETapi-v1-articles">Search for news articles.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-filters-sources">
-                                <a href="#endpoints-GETapi-filters-sources">GET api/filters/sources</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-user-preferences" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user-preferences">
+                    <a href="#user-preferences">User Preferences</a>
+                </li>
+                                    <ul id="tocify-subheader-user-preferences" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-preferences-POSTapi-v1-user-preferences">
+                                <a href="#user-preferences-POSTapi-v1-user-preferences">Update user preferences.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-filters-authors">
-                                <a href="#endpoints-GETapi-filters-authors">GET api/filters/authors</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-articles">
-                                <a href="#endpoints-GETapi-articles">GET api/articles</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-personalized-feed">
-                                <a href="#endpoints-GETapi-personalized-feed">GET api/personalized-feed</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-preferences-GETapi-v1-user-preferences">
+                                <a href="#user-preferences-GETapi-v1-user-preferences">Retrieve user preferences.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -122,7 +143,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 3, 2025</li>
+        <li>Last updated: February 5, 2025</li>
     </ul>
 </div>
 
@@ -144,20 +165,20 @@ You can switch the language used with the tabs at the top right (or from the nav
 
     
 
-                                <h2 id="authentication-POSTapi-register">Register a new user.</h2>
+                                <h2 id="authentication-POSTapi-v1-register">Register a new user.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-register">
+<span id="example-requests-POSTapi-v1-register">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/register" \
+    "http://127.0.0.1:8000/api/v1/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -171,7 +192,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/register"
+    "http://127.0.0.1:8000/api/v1/register"
 );
 
 const headers = {
@@ -194,9 +215,9 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-register">
+<span id="example-responses-POSTapi-v1-register">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (201):</p>
         </blockquote>
                 <pre>
 
@@ -211,44 +232,58 @@ fetch(url, {
     &quot;token_type&quot;: &quot;Bearer&quot;
 }</code>
  </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Validation failed&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email has already been taken.&quot;
+        ]
+    }
+}</code>
+ </pre>
     </span>
-<span id="execution-results-POSTapi-register" hidden>
+<span id="execution-results-POSTapi-v1-register" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-register"></span>:
+                id="execution-response-status-POSTapi-v1-register"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-register"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-register"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-register" hidden>
+<span id="execution-error-POSTapi-v1-register" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-register">
+    <pre><code id="execution-error-message-POSTapi-v1-register">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-register" data-method="POST"
-      data-path="api/register"
+<form id="form-POSTapi-v1-register" data-method="POST"
+      data-path="api/v1/register"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-register', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-register"
-                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-register"
+                    onclick="tryItOut('POSTapi-v1-register');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-register"
-                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-register"
+                    onclick="cancelTryOut('POSTapi-v1-register');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-register"
+                    id="btn-executetryout-POSTapi-v1-register"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -256,7 +291,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/register</code></b>
+            <b><code>api/v1/register</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -264,7 +299,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-register"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-register"
                value="application/json"
                data-component="header">
     <br>
@@ -275,7 +310,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-register"
+                              name="Accept"                data-endpoint="POSTapi-v1-register"
                value="application/json"
                data-component="header">
     <br>
@@ -287,7 +322,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="name"                data-endpoint="POSTapi-register"
+                              name="name"                data-endpoint="POSTapi-v1-register"
                value="John Doe"
                data-component="body">
     <br>
@@ -298,7 +333,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-register"
+                              name="email"                data-endpoint="POSTapi-v1-register"
                value="johndoe@example.com"
                data-component="body">
     <br>
@@ -309,7 +344,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-register"
+                              name="password"                data-endpoint="POSTapi-v1-register"
                value="secret123"
                data-component="body">
     <br>
@@ -320,7 +355,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password_confirmation"                data-endpoint="POSTapi-register"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-register"
                value="secret123"
                data-component="body">
     <br>
@@ -328,36 +363,32 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                <h1 id="endpoints">Endpoints</h1>
-
-    
-
-                                <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+                    <h2 id="authentication-POSTapi-v1-login">Authenticate and log in a user.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-login">
+<span id="example-requests-POSTapi-v1-login">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/login" \
+    "http://127.0.0.1:8000/api/v1/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"qlemke@example.com\",
-    \"password\": \"2tEtd{Y\\/N&lt;7Tn\\\\DD\"
+    \"email\": \"johndoe@example.com\",
+    \"password\": \"secret123\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/login"
+    "http://127.0.0.1:8000/api/v1/login"
 );
 
 const headers = {
@@ -366,8 +397,8 @@ const headers = {
 };
 
 let body = {
-    "email": "qlemke@example.com",
-    "password": "2tEtd{Y\/N&lt;7Tn\\DD"
+    "email": "johndoe@example.com",
+    "password": "secret123"
 };
 
 fetch(url, {
@@ -378,45 +409,84 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-login">
-</span>
-<span id="execution-results-POSTapi-login" hidden>
+<span id="example-responses-POSTapi-v1-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Login successful!&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;johndoe@example.com&quot;
+    },
+    &quot;access_token&quot;: &quot;1|zXW8y0...&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Invalid credentials.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Validation failed&quot;,
+    &quot;errors&quot;: {
+        &quot;email&quot;: [
+            &quot;The email field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-login" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-login"></span>:
+                id="execution-response-status-POSTapi-v1-login"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-login"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-login"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-login" hidden>
+<span id="execution-error-POSTapi-v1-login" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-login">
+    <pre><code id="execution-error-message-POSTapi-v1-login">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-login" data-method="POST"
-      data-path="api/login"
+<form id="form-POSTapi-v1-login" data-method="POST"
+      data-path="api/v1/login"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-login"
-                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-login"
+                    onclick="tryItOut('POSTapi-v1-login');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-login"
-                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-login"
+                    onclick="cancelTryOut('POSTapi-v1-login');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-login"
+                    id="btn-executetryout-POSTapi-v1-login"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -424,7 +494,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/login</code></b>
+            <b><code>api/v1/login</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -432,7 +502,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-login"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-login"
                value="application/json"
                data-component="header">
     <br>
@@ -443,7 +513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-login"
+                              name="Accept"                data-endpoint="POSTapi-v1-login"
                value="application/json"
                data-component="header">
     <br>
@@ -455,49 +525,52 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-login"
-               value="qlemke@example.com"
+                              name="email"                data-endpoint="POSTapi-v1-login"
+               value="johndoe@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>qlemke@example.com</code></p>
+<p>The email of the user. Example: <code>johndoe@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-login"
-               value="2tEtd{Y/N<7Tn\DD"
+                              name="password"                data-endpoint="POSTapi-v1-login"
+               value="secret123"
                data-component="body">
     <br>
-<p>Example: <code>2tEtd{Y/N&lt;7Tn\DD</code></p>
+<p>The password of the user. Example: <code>secret123</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-logout">POST api/logout</h2>
+                    <h2 id="authentication-POSTapi-v1-logout">Log out the authenticated user.</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-POSTapi-logout">
+<span id="example-requests-POSTapi-v1-logout">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/logout" \
+    "http://127.0.0.1:8000/api/v1/logout" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/logout"
+    "http://127.0.0.1:8000/api/v1/logout"
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -509,45 +582,73 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-logout">
-</span>
-<span id="execution-results-POSTapi-logout" hidden>
+<span id="example-responses-POSTapi-v1-logout">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Logged out successfully.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error message&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-logout" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-logout"></span>:
+                id="execution-response-status-POSTapi-v1-logout"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-logout"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-logout"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-logout" hidden>
+<span id="execution-error-POSTapi-v1-logout" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-logout">
+    <pre><code id="execution-error-message-POSTapi-v1-logout">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-logout" data-method="POST"
-      data-path="api/logout"
-      data-authed="0"
+<form id="form-POSTapi-v1-logout" data-method="POST"
+      data-path="api/v1/logout"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-logout', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-logout', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-logout"
-                    onclick="tryItOut('POSTapi-logout');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-logout"
+                    onclick="tryItOut('POSTapi-v1-logout');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-logout"
-                    onclick="cancelTryOut('POSTapi-logout');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-logout"
+                    onclick="cancelTryOut('POSTapi-v1-logout');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-logout"
+                    id="btn-executetryout-POSTapi-v1-logout"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -555,15 +656,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/logout</code></b>
+            <b><code>api/v1/logout</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-logout"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-logout"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-logout"
                value="application/json"
                data-component="header">
     <br>
@@ -574,7 +686,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-logout"
+                              name="Accept"                data-endpoint="POSTapi-v1-logout"
                value="application/json"
                data-component="header">
     <br>
@@ -582,27 +694,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-user">GET api/user</h2>
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-v1-user">GET api/v1/user</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-user">
+<span id="example-requests-GETapi-v1-user">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/user" \
+    --get "http://127.0.0.1:8000/api/v1/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/user"
+    "http://127.0.0.1:8000/api/v1/user"
 );
 
 const headers = {
@@ -617,7 +733,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-user">
+<span id="example-responses-GETapi-v1-user">
             <blockquote>
             <p>Example response (401):</p>
         </blockquote>
@@ -627,7 +743,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:3000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -635,43 +751,43 @@ access-control-allow-origin: *
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-user" hidden>
+<span id="execution-results-GETapi-v1-user" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-user"></span>:
+                id="execution-response-status-GETapi-v1-user"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-user"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-user" hidden>
+<span id="execution-error-GETapi-v1-user" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-user">
+    <pre><code id="execution-error-message-GETapi-v1-user">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-user" data-method="GET"
-      data-path="api/user"
+<form id="form-GETapi-v1-user" data-method="GET"
+      data-path="api/v1/user"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-user"
-                    onclick="tryItOut('GETapi-user');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-user"
+                    onclick="tryItOut('GETapi-v1-user');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-user"
-                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-user"
+                    onclick="cancelTryOut('GETapi-v1-user');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-user"
+                    id="btn-executetryout-GETapi-v1-user"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -679,7 +795,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/user</code></b>
+            <b><code>api/v1/user</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -687,7 +803,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-user"
+                              name="Content-Type"                data-endpoint="GETapi-v1-user"
                value="application/json"
                data-component="header">
     <br>
@@ -698,7 +814,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-user"
+                              name="Accept"                data-endpoint="GETapi-v1-user"
                value="application/json"
                data-component="header">
     <br>
@@ -706,28 +822,31 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-user-preferences">POST api/user/preferences</h2>
+                <h1 id="filters">Filters</h1>
+
+    
+
+                                <h2 id="filters-GETapi-v1-filters-categories">Get all unique categories.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-user-preferences">
+<span id="example-requests-GETapi-v1-filters-categories">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/user/preferences" \
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/filters/categories" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/user/preferences"
+    "http://127.0.0.1:8000/api/v1/filters/categories"
 );
 
 const headers = {
@@ -736,59 +855,83 @@ const headers = {
 };
 
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-user-preferences">
-</span>
-<span id="execution-results-POSTapi-user-preferences" hidden>
+<span id="example-responses-GETapi-v1-filters-categories">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;categories&quot;: [
+        &quot;Technology&quot;,
+        &quot;Health&quot;,
+        &quot;Business&quot;,
+        &quot;Sports&quot;
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error message&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-filters-categories" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-user-preferences"></span>:
+                id="execution-response-status-GETapi-v1-filters-categories"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-user-preferences"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-filters-categories"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-user-preferences" hidden>
+<span id="execution-error-GETapi-v1-filters-categories" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-user-preferences">
+    <pre><code id="execution-error-message-GETapi-v1-filters-categories">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-user-preferences" data-method="POST"
-      data-path="api/user/preferences"
+<form id="form-GETapi-v1-filters-categories" data-method="GET"
+      data-path="api/v1/filters/categories"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-user-preferences', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-filters-categories', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-user-preferences"
-                    onclick="tryItOut('POSTapi-user-preferences');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-filters-categories"
+                    onclick="tryItOut('GETapi-v1-filters-categories');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-user-preferences"
-                    onclick="cancelTryOut('POSTapi-user-preferences');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-filters-categories"
+                    onclick="cancelTryOut('GETapi-v1-filters-categories');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-user-preferences"
+                    id="btn-executetryout-GETapi-v1-filters-categories"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/user/preferences</code></b>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/filters/categories</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -796,7 +939,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-user-preferences"
+                              name="Content-Type"                data-endpoint="GETapi-v1-filters-categories"
                value="application/json"
                data-component="header">
     <br>
@@ -807,7 +950,831 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-user-preferences"
+                              name="Accept"                data-endpoint="GETapi-v1-filters-categories"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="filters-GETapi-v1-filters-sources">Get all unique sources.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-filters-sources">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/filters/sources" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/filters/sources"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-filters-sources">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;sources&quot;: [
+        &quot;BBC News&quot;,
+        &quot;Reuters&quot;,
+        &quot;TechCrunch&quot;,
+        &quot;CNN&quot;
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error message&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-filters-sources" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-filters-sources"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-filters-sources"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-filters-sources" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-filters-sources">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-filters-sources" data-method="GET"
+      data-path="api/v1/filters/sources"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-filters-sources', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-filters-sources"
+                    onclick="tryItOut('GETapi-v1-filters-sources');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-filters-sources"
+                    onclick="cancelTryOut('GETapi-v1-filters-sources');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-filters-sources"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/filters/sources</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-filters-sources"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-filters-sources"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="filters-GETapi-v1-filters-authors">Get all unique authors.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-filters-authors">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/filters/authors" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/filters/authors"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-filters-authors">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;authors&quot;: [
+        &quot;John Doe&quot;,
+        &quot;Jane Smith&quot;,
+        &quot;Michael Johnson&quot;
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error message&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-filters-authors" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-filters-authors"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-filters-authors"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-filters-authors" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-filters-authors">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-filters-authors" data-method="GET"
+      data-path="api/v1/filters/authors"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-filters-authors', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-filters-authors"
+                    onclick="tryItOut('GETapi-v1-filters-authors');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-filters-authors"
+                    onclick="cancelTryOut('GETapi-v1-filters-authors');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-filters-authors"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/filters/authors</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-filters-authors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-filters-authors"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                <h1 id="news">News</h1>
+
+    
+
+                                <h2 id="news-GETapi-v1-personalized-feed">Get a personalized news feed based on user preferences.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-personalized-feed">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/personalized-feed" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/personalized-feed"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-personalized-feed">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;AI Innovations in 2024&quot;,
+      &quot;category&quot;: &quot;Technology&quot;,
+      &quot;source&quot;: &quot;TechCrunch&quot;,
+      &quot;published_at&quot;: &quot;2024-02-01&quot;
+    }
+  ],
+  &quot;links&quot;: { ... },
+  &quot;meta&quot;: { ... }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthorized&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error details&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-personalized-feed" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-personalized-feed"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-personalized-feed"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-personalized-feed" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-personalized-feed">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-personalized-feed" data-method="GET"
+      data-path="api/v1/personalized-feed"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-personalized-feed', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-personalized-feed"
+                    onclick="tryItOut('GETapi-v1-personalized-feed');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-personalized-feed"
+                    onclick="cancelTryOut('GETapi-v1-personalized-feed');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-personalized-feed"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/personalized-feed</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-personalized-feed"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-personalized-feed"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-personalized-feed"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="news-GETapi-v1-articles">Search for news articles.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-articles">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/v1/articles?keyword=%22technology%22&amp;category=%22Business%22&amp;source=%22BBC+News%22&amp;author=%22John+Doe%22&amp;start_date=%222024-01-01%22&amp;end_date=%222024-01-31%22" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/articles"
+);
+
+const params = {
+    "keyword": ""technology"",
+    "category": ""Business"",
+    "source": ""BBC News"",
+    "author": ""John Doe"",
+    "start_date": ""2024-01-01"",
+    "end_date": ""2024-01-31"",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-articles">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;Latest Business Trends&quot;,
+      &quot;category&quot;: &quot;Business&quot;,
+      &quot;source&quot;: &quot;BBC News&quot;,
+      &quot;author&quot;: &quot;John Doe&quot;,
+      &quot;published_at&quot;: &quot;2024-01-15&quot;
+    }
+  ],
+  &quot;links&quot;: { ... },
+  &quot;meta&quot;: { ... }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Something went wrong&quot;,
+    &quot;error&quot;: &quot;Server error details&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-articles" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-articles"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-articles"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-articles" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-articles">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-articles" data-method="GET"
+      data-path="api/v1/articles"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-articles', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-articles"
+                    onclick="tryItOut('GETapi-v1-articles');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-articles"
+                    onclick="cancelTryOut('GETapi-v1-articles');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-articles"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/articles</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-articles"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-articles"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>keyword</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="keyword"                data-endpoint="GETapi-v1-articles"
+               value=""technology""
+               data-component="query">
+    <br>
+<p>Search keyword in title or description. Example: <code>"technology"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="category"                data-endpoint="GETapi-v1-articles"
+               value=""Business""
+               data-component="query">
+    <br>
+<p>Filter by category. Example: <code>"Business"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>source</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="source"                data-endpoint="GETapi-v1-articles"
+               value=""BBC News""
+               data-component="query">
+    <br>
+<p>Filter by source. Example: <code>"BBC News"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>author</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="author"                data-endpoint="GETapi-v1-articles"
+               value=""John Doe""
+               data-component="query">
+    <br>
+<p>Filter by author name. Example: <code>"John Doe"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>start_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="start_date"                data-endpoint="GETapi-v1-articles"
+               value=""2024-01-01""
+               data-component="query">
+    <br>
+<p>date Filter articles published after this date. Example: <code>"2024-01-01"</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>end_date</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="end_date"                data-endpoint="GETapi-v1-articles"
+               value=""2024-01-31""
+               data-component="query">
+    <br>
+<p>date Filter articles published before this date. Example: <code>"2024-01-31"</code></p>
+            </div>
+                </form>
+
+                <h1 id="user-preferences">User Preferences</h1>
+
+    
+
+                                <h2 id="user-preferences-POSTapi-v1-user-preferences">Update user preferences.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-user-preferences">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/v1/user/preferences" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"preferred_sources\": [
+        \"BBC News\",
+        \"CNN\"
+    ],
+    \"preferred_categories\": [
+        \"Technology\",
+        \"Business\"
+    ],
+    \"preferred_authors\": [
+        \"John Doe\",
+        \"Jane Smith\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/v1/user/preferences"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "preferred_sources": [
+        "BBC News",
+        "CNN"
+    ],
+    "preferred_categories": [
+        "Technology",
+        "Business"
+    ],
+    "preferred_authors": [
+        "John Doe",
+        "Jane Smith"
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-user-preferences">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Preferences updated successfully&quot;,
+    &quot;data&quot;: {
+        &quot;user_id&quot;: 1,
+        &quot;preferred_sources&quot;: [
+            &quot;BBC News&quot;,
+            &quot;CNN&quot;
+        ],
+        &quot;preferred_categories&quot;: [
+            &quot;Technology&quot;,
+            &quot;Business&quot;
+        ],
+        &quot;preferred_authors&quot;: [
+            &quot;John Doe&quot;,
+            &quot;Jane Smith&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-user-preferences" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-user-preferences"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-preferences"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-user-preferences" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-user-preferences">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-user-preferences" data-method="POST"
+      data-path="api/v1/user/preferences"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-preferences', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-user-preferences"
+                    onclick="tryItOut('POSTapi-v1-user-preferences');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-user-preferences"
+                    onclick="cancelTryOut('POSTapi-v1-user-preferences');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-user-preferences"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/user/preferences</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-user-preferences"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-user-preferences"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-user-preferences"
                value="application/json"
                data-component="header">
     <br>
@@ -816,63 +1783,72 @@ You can check the Dev Tools console for debugging information.</code></pre>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>preferred_sources</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
+<small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="preferred_sources"                data-endpoint="POSTapi-user-preferences"
-               value=""
+                              name="preferred_sources[0]"                data-endpoint="POSTapi-v1-user-preferences"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="preferred_sources[1]"                data-endpoint="POSTapi-v1-user-preferences"
                data-component="body">
     <br>
-
+<p>Optional list of preferred news sources.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>preferred_categories</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
+<small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="preferred_categories"                data-endpoint="POSTapi-user-preferences"
-               value=""
+                              name="preferred_categories[0]"                data-endpoint="POSTapi-v1-user-preferences"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="preferred_categories[1]"                data-endpoint="POSTapi-v1-user-preferences"
                data-component="body">
     <br>
-
+<p>Optional list of preferred categories.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>preferred_authors</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
+<small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="preferred_authors"                data-endpoint="POSTapi-user-preferences"
-               value=""
+                              name="preferred_authors[0]"                data-endpoint="POSTapi-v1-user-preferences"
+               data-component="body">
+        <input type="text" style="display: none"
+               name="preferred_authors[1]"                data-endpoint="POSTapi-v1-user-preferences"
                data-component="body">
     <br>
-
+<p>Optional list of preferred authors.</p>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-user-preferences">GET api/user/preferences</h2>
+                    <h2 id="user-preferences-GETapi-v1-user-preferences">Retrieve user preferences.</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
 
-<span id="example-requests-GETapi-user-preferences">
+<span id="example-requests-GETapi-v1-user-preferences">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/user/preferences" \
+    --get "http://127.0.0.1:8000/api/v1/user/preferences" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/user/preferences"
+    "http://127.0.0.1:8000/api/v1/user/preferences"
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -884,401 +1860,77 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-user-preferences">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-user-preferences" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-user-preferences"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-user-preferences"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-user-preferences" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-user-preferences">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-user-preferences" data-method="GET"
-      data-path="api/user/preferences"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-user-preferences', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-user-preferences"
-                    onclick="tryItOut('GETapi-user-preferences');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-user-preferences"
-                    onclick="cancelTryOut('GETapi-user-preferences');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-user-preferences"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/user/preferences</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-user-preferences"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-user-preferences"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-filters-categories">GET api/filters/categories</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-filters-categories">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/filters/categories" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/filters/categories"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-filters-categories">
+<span id="example-responses-GETapi-v1-user-preferences">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;categories&quot;: [
-        &quot;Variety&quot;,
-        &quot;Motorsport.com&quot;,
-        &quot;Page Six&quot;,
-        &quot;Financial Times&quot;,
-        &quot;Politico&quot;,
-        &quot;Forbes&quot;,
-        &quot;POLITICO.eu&quot;,
-        &quot;CNN&quot;,
-        &quot;Axios&quot;,
-        &quot;The Verge&quot;,
-        &quot;Associated Press&quot;,
-        &quot;Yahoo Entertainment&quot;,
-        &quot;Gizmodo.com&quot;,
-        &quot;Middle East crisis live&quot;,
-        &quot;Israel&quot;,
-        &quot;Gaza&quot;,
-        &quot;Hamas&quot;,
-        &quot;Donald Trump&quot;,
-        &quot;Benjamin Netanyahu&quot;,
-        &quot;Palestinian territories&quot;,
-        &quot;US news&quot;,
-        &quot;World news&quot;,
-        &quot;Politics&quot;,
-        &quot;UK news&quot;,
-        &quot;Politics live with Andrew Sparrow&quot;,
-        &quot;Keir Starmer&quot;,
-        &quot;Brexit&quot;,
-        &quot;Labour&quot;,
-        &quot;Conservatives&quot;,
-        &quot;European Union&quot;,
-        &quot;Trade policy&quot;,
-        &quot;Foreign policy&quot;,
-        &quot;Trump administration&quot;,
-        &quot;Europe&quot;,
-        &quot;Donald Tusk&quot;,
-        &quot;Bridget Phillipson&quot;,
-        &quot;Education&quot;,
-        &quot;Schools&quot;,
-        &quot;Ofsted&quot;,
-        &quot;Greenland&quot;,
-        &quot;Commonwealth of Nations&quot;,
-        &quot;King Charles III&quot;,
-        &quot;Kemi Badenoch&quot;,
-        &quot;US politics&quot;,
-        &quot;Monarchy&quot;,
-        &quot;Green party&quot;,
-        &quot;Proportional representation&quot;,
-        &quot;Europe live with Jakub Krupa&quot;,
-        &quot;Emmanuel Macron&quot;,
-        &quot;International trade&quot;,
-        &quot;Global economy&quot;,
-        &quot;Transfer window&quot;,
-        &quot;Football&quot;,
-        &quot;Sport&quot;,
-        &quot;Premier League&quot;,
-        &quot;European club football&quot;,
-        &quot;Manchester United&quot;,
-        &quot;US politics live with Chris Stein&quot;,
-        &quot;US politics live&quot;,
-        &quot;Mexico&quot;,
-        &quot;Canada&quot;,
-        &quot;China&quot;,
-        &quot;Republicans&quot;,
-        &quot;Social work&quot;,
-        &quot;Other lives&quot;,
-        &quot;Brighton&quot;,
-        &quot;University of East Anglia&quot;,
-        &quot;Children&quot;,
-        &quot;Nottingham&quot;,
-        &quot;Nottingham Forest&quot;,
-        &quot;England&quot;,
-        &quot;Transgender&quot;,
-        &quot;LGBTQ+ rights&quot;,
-        &quot;Health&quot;,
-        &quot;Cate Blanchett&quot;,
-        &quot;#MeToo movement&quot;,
-        &quot;Film&quot;,
-        &quot;Culture&quot;,
-        &quot;Harvey Weinstein&quot;,
-        &quot;us&quot;,
-        &quot;business&quot;,
-        &quot;world&quot;,
-        &quot;arts&quot;,
-        &quot;style&quot;,
-        &quot;health&quot;,
-        &quot;opinion&quot;,
-        &quot;science&quot;
-    ]
+    &quot;data&quot;: {
+        &quot;user_id&quot;: 1,
+        &quot;preferred_sources&quot;: [
+            &quot;BBC News&quot;,
+            &quot;CNN&quot;
+        ],
+        &quot;preferred_categories&quot;: [
+            &quot;Technology&quot;,
+            &quot;Business&quot;
+        ],
+        &quot;preferred_authors&quot;: [
+            &quot;John Doe&quot;,
+            &quot;Jane Smith&quot;
+        ]
+    }
 }</code>
  </pre>
-    </span>
-<span id="execution-results-GETapi-filters-categories" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-filters-categories"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-filters-categories"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-filters-categories" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-filters-categories">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-filters-categories" data-method="GET"
-      data-path="api/filters/categories"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-filters-categories', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-filters-categories"
-                    onclick="tryItOut('GETapi-filters-categories');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-filters-categories"
-                    onclick="cancelTryOut('GETapi-filters-categories');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-filters-categories"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/filters/categories</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-filters-categories"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-filters-categories"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-filters-sources">GET api/filters/sources</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-filters-sources">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/filters/sources" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/filters/sources"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-filters-sources">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (404):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;sources&quot;: [
-        &quot;NewsAPI&quot;,
-        &quot;Guardian&quot;,
-        &quot;NYTimes&quot;
-    ]
+    &quot;message&quot;: &quot;No preferences found&quot;
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-filters-sources" hidden>
+<span id="execution-results-GETapi-v1-user-preferences" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-filters-sources"></span>:
+                id="execution-response-status-GETapi-v1-user-preferences"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-filters-sources"
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-preferences"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-filters-sources" hidden>
+<span id="execution-error-GETapi-v1-user-preferences" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-filters-sources">
+    <pre><code id="execution-error-message-GETapi-v1-user-preferences">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-filters-sources" data-method="GET"
-      data-path="api/filters/sources"
-      data-authed="0"
+<form id="form-GETapi-v1-user-preferences" data-method="GET"
+      data-path="api/v1/user/preferences"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-filters-sources', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-preferences', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-filters-sources"
-                    onclick="tryItOut('GETapi-filters-sources');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-user-preferences"
+                    onclick="tryItOut('GETapi-v1-user-preferences');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-filters-sources"
-                    onclick="cancelTryOut('GETapi-filters-sources');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-user-preferences"
+                    onclick="cancelTryOut('GETapi-v1-user-preferences');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-filters-sources"
+                    id="btn-executetryout-GETapi-v1-user-preferences"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -1286,15 +1938,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/filters/sources</code></b>
+            <b><code>api/v1/user/preferences</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-user-preferences"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-filters-sources"
+                              name="Content-Type"                data-endpoint="GETapi-v1-user-preferences"
                value="application/json"
                data-component="header">
     <br>
@@ -1305,630 +1968,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-filters-sources"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-filters-authors">GET api/filters/authors</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-filters-authors">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/filters/authors" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/filters/authors"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-filters-authors">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;authors&quot;: [
-        &quot;Jack Dunn&quot;,
-        &quot;Nick DeGroot&quot;,
-        &quot;Eileen Reslen&quot;,
-        &quot;Tina Moore&quot;,
-        &quot;Joe Miller&quot;,
-        &quot;Alex Rogers&quot;,
-        &quot;James Politi&quot;,
-        &quot;David Cohen&quot;,
-        &quot;Monica Mercuri&quot;,
-        &quot;Zia Weise&quot;,
-        &quot;Billy Stockwell&quot;,
-        &quot;Avery Lotz&quot;,
-        &quot;Rebecca Rubin&quot;,
-        &quot;Daniel Payne&quot;,
-        &quot;Brandon Widder&quot;,
-        &quot;Gary Fineout&quot;,
-        &quot;MATTHEW LEE&quot;,
-        &quot;Jesse Cohen&quot;,
-        &quot;Gizmodo Deals&quot;,
-        &quot;Daniel Lavelle&quot;,
-        &quot;Yohannes Lowe&quot;,
-        &quot;Andrew Sparrow&quot;,
-        &quot;Jakub Krupa&quot;,
-        &quot;Will Magee&quot;,
-        &quot;John Brewin&quot;,
-        &quot;Will Unwin&quot;,
-        &quot;Chris Stein&quot;,
-        &quot;Martin Belam&quot;,
-        &quot;Alex Sutton&quot;,
-        &quot;Jessica Murray Midlands correspondent&quot;,
-        &quot;Hannah Al-Othman North of England correspondent&quot;,
-        &quot;Anna Betts&quot;,
-        &quot;Catherine Shoard&quot;,
-        &quot;Ana Swanson&quot;,
-        &quot;Keith Bradsher&quot;,
-        &quot;Patricia Cohen&quot;,
-        &quot;Erica L. Green&quot;,
-        &quot;Carol Rosenberg&quot;,
-        &quot;Eric Schmitt&quot;,
-        &quot;Michael Crowley&quot;,
-        &quot;Annie Correal&quot;,
-        &quot;Jon Caramanica&quot;,
-        &quot;Joe Coscarelli&quot;,
-        &quot;Caryn Ganz&quot;,
-        &quot;Jon Pareles&quot;,
-        &quot;Lindsay Zoladz&quot;,
-        &quot;Vanessa Friedman&quot;,
-        &quot;Patrick Kingsley&quot;,
-        &quot;Jenny Vrentas&quot;,
-        &quot;Mitch Smith&quot;,
-        &quot;Erin Schaff&quot;,
-        &quot;Soumya Karlamangla&quot;,
-        &quot;Mimi Dwyer&quot;,
-        &quot;Carl Zimmer&quot;,
-        &quot;Claire Moses&quot;,
-        &quot;Isabella Kwai&quot;,
-        &quot;Christine Hauser&quot;,
-        &quot;John Yoon&quot;,
-        &quot;Tim Balk&quot;,
-        &quot;Emmanuel Morgan&quot;,
-        &quot;Gail Collins&quot;,
-        &quot;Bret Stephens&quot;,
-        &quot;Abrahm Lustgarten&quot;,
-        &quot;Catherine Porter&quot;,
-        &quot;S&eacute;gol&egrave;ne Le Stradic&quot;,
-        &quot;Troy Closson&quot;,
-        &quot;J. David Goodman&quot;,
-        &quot;Katrina Miller&quot;,
-        &quot;Jos&eacute; Bautista&quot;,
-        &quot;Amelia Nierenberg&quot;,
-        &quot;Matt Stevens&quot;
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-filters-authors" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-filters-authors"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-filters-authors"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-filters-authors" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-filters-authors">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-filters-authors" data-method="GET"
-      data-path="api/filters/authors"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-filters-authors', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-filters-authors"
-                    onclick="tryItOut('GETapi-filters-authors');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-filters-authors"
-                    onclick="cancelTryOut('GETapi-filters-authors');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-filters-authors"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/filters/authors</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-filters-authors"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-filters-authors"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-articles">GET api/articles</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-articles">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/articles" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/articles"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-articles">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 17,
-            &quot;title&quot;: &quot;Netanyahu on US visit as Hamas says it is ready to negotiate phase two of ceasefire &ndash; Middle East crisis live&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/world/live/2025/feb/03/middle-east-crisis-live-benjamin-netanyahu-israel-gaza-ceasefire-donald-trump&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/a18271bda488f2f0ee5861668d403ec200bb0fb1/0_72_1600_960/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Daniel Lavelle, Yohannes Lowe&quot;,
-            &quot;category&quot;: &quot;Middle East crisis live, Israel, Gaza, Hamas, Donald Trump, Benjamin Netanyahu, Palestinian territories, US news, World news&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:40:27&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 18,
-            &quot;title&quot;: &quot;Keir Starmer says he does not accept UK has to choose between US and EU &ndash; UK politics live&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/politics/live/2025/feb/03/keir-starmer-europe-brexit-donald-trump-latest-politics-news-updates-live&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/2887d8133d6ac1b5b4438a9c679516e2d9e64cf6/160_427_4811_2887/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Andrew Sparrow&quot;,
-            &quot;category&quot;: &quot;Politics, UK news, Politics live with Andrew Sparrow, Keir Starmer, Brexit, Labour, Conservatives, European Union, Donald Trump, Trade policy, Foreign policy, Trump administration, Europe, Donald Tusk, Bridget Phillipson, Education, Schools, Ofsted, Greenland, Commonwealth of Nations, King Charles III, Kemi Badenoch, US news, US politics, Monarchy, Green party, Proportional representation&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:40:13&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 19,
-            &quot;title&quot;: &quot;EU ready to react to &lsquo;unnecessary and stupid&rsquo; tariffs threatened by Trump, leaders say &ndash; Europe live&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/world/live/2025/feb/03/eu-europe-emmanuel-macron-donald-trump-defence-spending-latest-news-updates&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/c1632236dc46fa8784595cf0b37bf6b4e55bf5d0/0_183_6242_3745/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Jakub Krupa&quot;,
-            &quot;category&quot;: &quot;Europe live with Jakub Krupa, Europe, World news, Emmanuel Macron, International trade, Global economy&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:40:02&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 20,
-            &quot;title&quot;: &quot;Transfer deadline day: Tel heading to Tottenham, Gonz&aacute;lez, F&eacute;lix, Ferguson news and latest moves &ndash; live&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/football/live/2025/feb/03/transfer-deadline-day-rashford-tel-chilwell-disasi-live&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/450845bbc1f321af070ee1db704826774f7a516d/278_694_5429_3258/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Will Magee, John Brewin, Will Unwin&quot;,
-            &quot;category&quot;: &quot;Transfer window, Football, Sport, Premier League, European club football, Manchester United&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:37:15&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 21,
-            &quot;title&quot;: &quot;Trump pauses plan to impose 25% tariff on Mexico after Sheinbaum agrees to deploy troops to southern US border &ndash; live&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/us-news/live/2025/feb/03/donald-trump-trade-tariffs-eu-mexico-canada-china-us-politics-live&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/07367dde2fb75d5b9f548a8c1f253c1796dbb0de/1_0_2998_1800/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Chris Stein, Martin Belam&quot;,
-            &quot;category&quot;: &quot;Trump administration, US politics live with Chris Stein, US politics live, US news, World news, Donald Trump, Mexico, Canada, China, European Union, US politics, Republicans&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:35:29&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 22,
-            &quot;title&quot;: &quot;Caroline Reid obituary&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/education/2025/feb/03/caroline-reid-obituary&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/d61bec28813c6e43366ee953d9de4af976d02ddf/0_736_2173_1303/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Alex Sutton&quot;,
-            &quot;category&quot;: &quot;Social work, Other lives, Brighton, University of East Anglia, Children&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:32:58&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 23,
-            &quot;title&quot;: &quot;&lsquo;Free pint when Forest score!&rsquo;: pub loses &pound;1,500 after seven-goal rampage&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/uk-news/2025/feb/03/free-pint-when-forest-score-pub-loses-1500-after-seven-goal-rampage&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/87e47a145ab0aeec92bcaefffec38635db83ee8c/0_68_1600_960/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Jessica Murray Midlands correspondent&quot;,
-            &quot;category&quot;: &quot;Nottingham, Nottingham Forest, UK news, Football&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:28:20&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 24,
-            &quot;title&quot;: &quot;Boy, 15, dies after stabbing incident at Sheffield school&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/uk-news/2025/feb/03/boy-detained-teenager-stabbed-school-sheffield&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/f8f7c3f0523b5779c0a40064a2219a017ac05486/0_216_3196_1918/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Hannah Al-Othman North of England correspondent&quot;,
-            &quot;category&quot;: &quot;UK news, England&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:28:18&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 25,
-            &quot;title&quot;: &quot;US hospitals suspend healthcare for transgender youth after Trump order&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/us-news/2025/feb/03/trans-youth-healthcare-hospitals-trump&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/caedcfe3e692dced4eaa950041218f9f3c0e1b34/0_313_6048_3629/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Anna Betts&quot;,
-            &quot;category&quot;: &quot;Trump administration, US news, Donald Trump, Transgender, LGBTQ+ rights, Health, Children, US politics&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:14:53&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 26,
-            &quot;title&quot;: &quot;Cate Blanchett: lack of change in Hollywood after #MeToo &lsquo;quite distressing&rsquo;&quot;,
-            &quot;description&quot;: null,
-            &quot;url&quot;: &quot;https://www.theguardian.com/world/2025/feb/03/cate-blanchett-lack-of-change-in-hollywood-after-metoo-quite-distressing&quot;,
-            &quot;image&quot;: &quot;https://media.guim.co.uk/be7e1295b54a160e0c331e839735fc01b8a8e812/59_86_4011_2407/500.jpg&quot;,
-            &quot;source&quot;: &quot;Guardian&quot;,
-            &quot;author&quot;: &quot;Catherine Shoard&quot;,
-            &quot;category&quot;: &quot;Cate Blanchett, #MeToo movement, Film, Culture, Harvey Weinstein&quot;,
-            &quot;published_at&quot;: &quot;2025-02-03 17:13:17&quot;,
-            &quot;created_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-02-03T17:40:38.000000Z&quot;
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 5,
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=5&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
-            &quot;label&quot;: &quot;2&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=3&quot;,
-            &quot;label&quot;: &quot;3&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=4&quot;,
-            &quot;label&quot;: &quot;4&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=5&quot;,
-            &quot;label&quot;: &quot;5&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
-            &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: &quot;http://127.0.0.1:8000/api/articles?page=2&quot;,
-    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/articles&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 10,
-    &quot;total&quot;: 48
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-articles" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-articles"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-articles"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-articles" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-articles">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-articles" data-method="GET"
-      data-path="api/articles"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-articles', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-articles"
-                    onclick="tryItOut('GETapi-articles');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-articles"
-                    onclick="cancelTryOut('GETapi-articles');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-articles"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/articles</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-articles"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-articles"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-personalized-feed">GET api/personalized-feed</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-personalized-feed">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/personalized-feed" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/personalized-feed"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-personalized-feed">
-            <blockquote>
-            <p>Example response (401):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-access-control-allow-origin: *
- </code></pre></details>         <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Unauthenticated.&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-personalized-feed" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-personalized-feed"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-personalized-feed"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-personalized-feed" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-personalized-feed">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-personalized-feed" data-method="GET"
-      data-path="api/personalized-feed"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-personalized-feed', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-personalized-feed"
-                    onclick="tryItOut('GETapi-personalized-feed');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-personalized-feed"
-                    onclick="cancelTryOut('GETapi-personalized-feed');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-personalized-feed"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/personalized-feed</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-personalized-feed"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-personalized-feed"
+                              name="Accept"                data-endpoint="GETapi-v1-user-preferences"
                value="application/json"
                data-component="header">
     <br>

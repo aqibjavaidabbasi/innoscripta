@@ -7,14 +7,14 @@ servers:
   -
     url: 'http://127.0.0.1:8000'
 paths:
-  /api/register:
+  /api/v1/register:
     post:
       summary: 'Register a new user.'
       operationId: registerANewUser
       description: ''
       parameters: []
       responses:
-        200:
+        201:
           description: ''
           content:
             application/json:
@@ -50,6 +50,30 @@ paths:
                   token_type:
                     type: string
                     example: Bearer
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
       tags:
         - Authentication
       requestBody:
@@ -85,15 +109,87 @@ paths:
                 - password
                 - password_confirmation
       security: []
-  /api/login:
+  /api/v1/login:
     post:
-      summary: ''
-      operationId: postApiLogin
+      summary: 'Authenticate and log in a user.'
+      operationId: authenticateAndLogInAUser
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Login successful!'
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                  access_token: 1|zXW8y0...
+                  token_type: Bearer
+                properties:
+                  message:
+                    type: string
+                    example: 'Login successful!'
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                  access_token:
+                    type: string
+                    example: 1|zXW8y0...
+                  token_type:
+                    type: string
+                    example: Bearer
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid credentials.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid credentials.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -103,32 +199,71 @@ paths:
               properties:
                 email:
                   type: string
-                  description: 'Must be a valid email address.'
-                  example: qlemke@example.com
+                  description: 'The email of the user.'
+                  example: johndoe@example.com
                   nullable: false
                 password:
                   type: string
-                  description: ''
-                  example: '2tEtd{Y/N<7Tn\DD'
+                  description: 'The password of the user.'
+                  example: secret123
                   nullable: false
               required:
                 - email
                 - password
       security: []
-  /api/logout:
+  /api/v1/logout:
     post:
-      summary: ''
-      operationId: postApiLogout
+      summary: 'Log out the authenticated user.'
+      operationId: logOutTheAuthenticatedUser
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Logged out successfully.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Logged out successfully.'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
       tags:
-        - Endpoints
-      security: []
-  /api/user:
+        - Authentication
+  /api/v1/user:
     get:
       summary: ''
-      operationId: getApiUser
+      operationId: getApiV1User
       description: ''
       parameters: []
       responses:
@@ -147,15 +282,350 @@ paths:
       tags:
         - Endpoints
       security: []
-  /api/user/preferences:
-    post:
-      summary: ''
-      operationId: postApiUserPreferences
+  /api/v1/filters/categories:
+    get:
+      summary: 'Get all unique categories.'
+      operationId: getAllUniqueCategories
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  categories:
+                    - Technology
+                    - Health
+                    - Business
+                    - Sports
+                properties:
+                  categories:
+                    type: array
+                    example:
+                      - Technology
+                      - Health
+                      - Business
+                      - Sports
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
       tags:
-        - Endpoints
+        - Filters
+      security: []
+  /api/v1/filters/sources:
+    get:
+      summary: 'Get all unique sources.'
+      operationId: getAllUniqueSources
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  sources:
+                    - 'BBC News'
+                    - Reuters
+                    - TechCrunch
+                    - CNN
+                properties:
+                  sources:
+                    type: array
+                    example:
+                      - 'BBC News'
+                      - Reuters
+                      - TechCrunch
+                      - CNN
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Filters
+      security: []
+  /api/v1/filters/authors:
+    get:
+      summary: 'Get all unique authors.'
+      operationId: getAllUniqueAuthors
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  authors:
+                    - 'John Doe'
+                    - 'Jane Smith'
+                    - 'Michael Johnson'
+                properties:
+                  authors:
+                    type: array
+                    example:
+                      - 'John Doe'
+                      - 'Jane Smith'
+                      - 'Michael Johnson'
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Filters
+      security: []
+  /api/v1/personalized-feed:
+    get:
+      summary: 'Get a personalized news feed based on user preferences.'
+      operationId: getAPersonalizedNewsFeedBasedOnUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"AI Innovations in 2024\",\n      \"category\": \"Technology\",\n      \"source\": \"TechCrunch\",\n      \"published_at\": \"2024-02-01\"\n    }\n  ],\n  \"links\": { ... },\n  \"meta\": { ... }\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: Unauthorized
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error details'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error details'
+      tags:
+        - News
+  /api/v1/articles:
+    get:
+      summary: 'Search for news articles.'
+      operationId: searchForNewsArticles
+      description: ''
+      parameters:
+        -
+          in: query
+          name: keyword
+          description: 'Search keyword in title or description.'
+          example: '"technology"'
+          required: false
+          schema:
+            type: string
+            description: 'Search keyword in title or description.'
+            example: '"technology"'
+            nullable: false
+        -
+          in: query
+          name: category
+          description: 'Filter by category.'
+          example: '"Business"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by category.'
+            example: '"Business"'
+            nullable: false
+        -
+          in: query
+          name: source
+          description: 'Filter by source.'
+          example: '"BBC News"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by source.'
+            example: '"BBC News"'
+            nullable: false
+        -
+          in: query
+          name: author
+          description: 'Filter by author name.'
+          example: '"John Doe"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by author name.'
+            example: '"John Doe"'
+            nullable: false
+        -
+          in: query
+          name: start_date
+          description: 'date Filter articles published after this date.'
+          example: '"2024-01-01"'
+          required: false
+          schema:
+            type: string
+            description: 'date Filter articles published after this date.'
+            example: '"2024-01-01"'
+            nullable: false
+        -
+          in: query
+          name: end_date
+          description: 'date Filter articles published before this date.'
+          example: '"2024-01-31"'
+          required: false
+          schema:
+            type: string
+            description: 'date Filter articles published before this date.'
+            example: '"2024-01-31"'
+            nullable: false
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"Latest Business Trends\",\n      \"category\": \"Business\",\n      \"source\": \"BBC News\",\n      \"author\": \"John Doe\",\n      \"published_at\": \"2024-01-15\"\n    }\n  ],\n  \"links\": { ... },\n  \"meta\": { ... }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error details'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error details'
+      tags:
+        - News
+      security: []
+  /api/v1/user/preferences:
+    post:
+      summary: 'Update user preferences.'
+      operationId: updateUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Preferences updated successfully'
+                  data:
+                    user_id: 1
+                    preferred_sources:
+                      - 'BBC News'
+                      - CNN
+                    preferred_categories:
+                      - Technology
+                      - Business
+                    preferred_authors:
+                      - 'John Doe'
+                      - 'Jane Smith'
+                properties:
+                  message:
+                    type: string
+                    example: 'Preferences updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      user_id:
+                        type: integer
+                        example: 1
+                      preferred_sources:
+                        type: array
+                        example:
+                          - 'BBC News'
+                          - CNN
+                        items:
+                          type: string
+                      preferred_categories:
+                        type: array
+                        example:
+                          - Technology
+                          - Business
+                        items:
+                          type: string
+                      preferred_authors:
+                        type: array
+                        example:
+                          - 'John Doe'
+                          - 'Jane Smith'
+                        items:
+                          type: string
+      tags:
+        - 'User Preferences'
       requestBody:
         required: false
         content:
@@ -164,879 +634,111 @@ paths:
               type: object
               properties:
                 preferred_sources:
-                  type: object
-                  description: ''
-                  example: null
-                  nullable: false
-                  properties: {  }
-                preferred_categories:
-                  type: object
-                  description: ''
-                  example: null
-                  nullable: false
-                  properties: {  }
-                preferred_authors:
-                  type: object
-                  description: ''
-                  example: null
-                  nullable: false
-                  properties: {  }
-      security: []
-    get:
-      summary: ''
-      operationId: getApiUserPreferences
-      description: ''
-      parameters: []
-      responses:
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: Unauthenticated.
-                properties:
-                  message:
-                    type: string
-                    example: Unauthenticated.
-      tags:
-        - Endpoints
-      security: []
-  /api/filters/categories:
-    get:
-      summary: ''
-      operationId: getApiFiltersCategories
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  categories:
-                    - Variety
-                    - Motorsport.com
-                    - 'Page Six'
-                    - 'Financial Times'
-                    - Politico
-                    - Forbes
-                    - POLITICO.eu
+                  type: array
+                  description: 'Optional list of preferred news sources.'
+                  example:
+                    - 'BBC News'
                     - CNN
-                    - Axios
-                    - 'The Verge'
-                    - 'Associated Press'
-                    - 'Yahoo Entertainment'
-                    - Gizmodo.com
-                    - 'Middle East crisis live'
-                    - Israel
-                    - Gaza
-                    - Hamas
-                    - 'Donald Trump'
-                    - 'Benjamin Netanyahu'
-                    - 'Palestinian territories'
-                    - 'US news'
-                    - 'World news'
-                    - Politics
-                    - 'UK news'
-                    - 'Politics live with Andrew Sparrow'
-                    - 'Keir Starmer'
-                    - Brexit
-                    - Labour
-                    - Conservatives
-                    - 'European Union'
-                    - 'Trade policy'
-                    - 'Foreign policy'
-                    - 'Trump administration'
-                    - Europe
-                    - 'Donald Tusk'
-                    - 'Bridget Phillipson'
-                    - Education
-                    - Schools
-                    - Ofsted
-                    - Greenland
-                    - 'Commonwealth of Nations'
-                    - 'King Charles III'
-                    - 'Kemi Badenoch'
-                    - 'US politics'
-                    - Monarchy
-                    - 'Green party'
-                    - 'Proportional representation'
-                    - 'Europe live with Jakub Krupa'
-                    - 'Emmanuel Macron'
-                    - 'International trade'
-                    - 'Global economy'
-                    - 'Transfer window'
-                    - Football
-                    - Sport
-                    - 'Premier League'
-                    - 'European club football'
-                    - 'Manchester United'
-                    - 'US politics live with Chris Stein'
-                    - 'US politics live'
-                    - Mexico
-                    - Canada
-                    - China
-                    - Republicans
-                    - 'Social work'
-                    - 'Other lives'
-                    - Brighton
-                    - 'University of East Anglia'
-                    - Children
-                    - Nottingham
-                    - 'Nottingham Forest'
-                    - England
-                    - Transgender
-                    - 'LGBTQ+ rights'
-                    - Health
-                    - 'Cate Blanchett'
-                    - '#MeToo movement'
-                    - Film
-                    - Culture
-                    - 'Harvey Weinstein'
-                    - us
-                    - business
-                    - world
-                    - arts
-                    - style
-                    - health
-                    - opinion
-                    - science
-                properties:
-                  categories:
-                    type: array
-                    example:
-                      - Variety
-                      - Motorsport.com
-                      - 'Page Six'
-                      - 'Financial Times'
-                      - Politico
-                      - Forbes
-                      - POLITICO.eu
+                  items:
+                    type: string
+                    nullable: true
+                preferred_categories:
+                  type: array
+                  description: 'Optional list of preferred categories.'
+                  example:
+                    - Technology
+                    - Business
+                  items:
+                    type: string
+                    nullable: true
+                preferred_authors:
+                  type: array
+                  description: 'Optional list of preferred authors.'
+                  example:
+                    - 'John Doe'
+                    - 'Jane Smith'
+                  items:
+                    type: string
+                    nullable: true
+    get:
+      summary: 'Retrieve user preferences.'
+      operationId: retrieveUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    user_id: 1
+                    preferred_sources:
+                      - 'BBC News'
                       - CNN
-                      - Axios
-                      - 'The Verge'
-                      - 'Associated Press'
-                      - 'Yahoo Entertainment'
-                      - Gizmodo.com
-                      - 'Middle East crisis live'
-                      - Israel
-                      - Gaza
-                      - Hamas
-                      - 'Donald Trump'
-                      - 'Benjamin Netanyahu'
-                      - 'Palestinian territories'
-                      - 'US news'
-                      - 'World news'
-                      - Politics
-                      - 'UK news'
-                      - 'Politics live with Andrew Sparrow'
-                      - 'Keir Starmer'
-                      - Brexit
-                      - Labour
-                      - Conservatives
-                      - 'European Union'
-                      - 'Trade policy'
-                      - 'Foreign policy'
-                      - 'Trump administration'
-                      - Europe
-                      - 'Donald Tusk'
-                      - 'Bridget Phillipson'
-                      - Education
-                      - Schools
-                      - Ofsted
-                      - Greenland
-                      - 'Commonwealth of Nations'
-                      - 'King Charles III'
-                      - 'Kemi Badenoch'
-                      - 'US politics'
-                      - Monarchy
-                      - 'Green party'
-                      - 'Proportional representation'
-                      - 'Europe live with Jakub Krupa'
-                      - 'Emmanuel Macron'
-                      - 'International trade'
-                      - 'Global economy'
-                      - 'Transfer window'
-                      - Football
-                      - Sport
-                      - 'Premier League'
-                      - 'European club football'
-                      - 'Manchester United'
-                      - 'US politics live with Chris Stein'
-                      - 'US politics live'
-                      - Mexico
-                      - Canada
-                      - China
-                      - Republicans
-                      - 'Social work'
-                      - 'Other lives'
-                      - Brighton
-                      - 'University of East Anglia'
-                      - Children
-                      - Nottingham
-                      - 'Nottingham Forest'
-                      - England
-                      - Transgender
-                      - 'LGBTQ+ rights'
-                      - Health
-                      - 'Cate Blanchett'
-                      - '#MeToo movement'
-                      - Film
-                      - Culture
-                      - 'Harvey Weinstein'
-                      - us
-                      - business
-                      - world
-                      - arts
-                      - style
-                      - health
-                      - opinion
-                      - science
-                    items:
-                      type: string
-      tags:
-        - Endpoints
-      security: []
-  /api/filters/sources:
-    get:
-      summary: ''
-      operationId: getApiFiltersSources
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  sources:
-                    - NewsAPI
-                    - Guardian
-                    - NYTimes
+                    preferred_categories:
+                      - Technology
+                      - Business
+                    preferred_authors:
+                      - 'John Doe'
+                      - 'Jane Smith'
                 properties:
-                  sources:
-                    type: array
-                    example:
-                      - NewsAPI
-                      - Guardian
-                      - NYTimes
-                    items:
-                      type: string
-      tags:
-        - Endpoints
-      security: []
-  /api/filters/authors:
-    get:
-      summary: ''
-      operationId: getApiFiltersAuthors
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  authors:
-                    - 'Jack Dunn'
-                    - 'Nick DeGroot'
-                    - 'Eileen Reslen'
-                    - 'Tina Moore'
-                    - 'Joe Miller'
-                    - 'Alex Rogers'
-                    - 'James Politi'
-                    - 'David Cohen'
-                    - 'Monica Mercuri'
-                    - 'Zia Weise'
-                    - 'Billy Stockwell'
-                    - 'Avery Lotz'
-                    - 'Rebecca Rubin'
-                    - 'Daniel Payne'
-                    - 'Brandon Widder'
-                    - 'Gary Fineout'
-                    - 'MATTHEW LEE'
-                    - 'Jesse Cohen'
-                    - 'Gizmodo Deals'
-                    - 'Daniel Lavelle'
-                    - 'Yohannes Lowe'
-                    - 'Andrew Sparrow'
-                    - 'Jakub Krupa'
-                    - 'Will Magee'
-                    - 'John Brewin'
-                    - 'Will Unwin'
-                    - 'Chris Stein'
-                    - 'Martin Belam'
-                    - 'Alex Sutton'
-                    - 'Jessica Murray Midlands correspondent'
-                    - 'Hannah Al-Othman North of England correspondent'
-                    - 'Anna Betts'
-                    - 'Catherine Shoard'
-                    - 'Ana Swanson'
-                    - 'Keith Bradsher'
-                    - 'Patricia Cohen'
-                    - 'Erica L. Green'
-                    - 'Carol Rosenberg'
-                    - 'Eric Schmitt'
-                    - 'Michael Crowley'
-                    - 'Annie Correal'
-                    - 'Jon Caramanica'
-                    - 'Joe Coscarelli'
-                    - 'Caryn Ganz'
-                    - 'Jon Pareles'
-                    - 'Lindsay Zoladz'
-                    - 'Vanessa Friedman'
-                    - 'Patrick Kingsley'
-                    - 'Jenny Vrentas'
-                    - 'Mitch Smith'
-                    - 'Erin Schaff'
-                    - 'Soumya Karlamangla'
-                    - 'Mimi Dwyer'
-                    - 'Carl Zimmer'
-                    - 'Claire Moses'
-                    - 'Isabella Kwai'
-                    - 'Christine Hauser'
-                    - 'John Yoon'
-                    - 'Tim Balk'
-                    - 'Emmanuel Morgan'
-                    - 'Gail Collins'
-                    - 'Bret Stephens'
-                    - 'Abrahm Lustgarten'
-                    - 'Catherine Porter'
-                    - 'Ségolène Le Stradic'
-                    - 'Troy Closson'
-                    - 'J. David Goodman'
-                    - 'Katrina Miller'
-                    - 'José Bautista'
-                    - 'Amelia Nierenberg'
-                    - 'Matt Stevens'
-                properties:
-                  authors:
-                    type: array
-                    example:
-                      - 'Jack Dunn'
-                      - 'Nick DeGroot'
-                      - 'Eileen Reslen'
-                      - 'Tina Moore'
-                      - 'Joe Miller'
-                      - 'Alex Rogers'
-                      - 'James Politi'
-                      - 'David Cohen'
-                      - 'Monica Mercuri'
-                      - 'Zia Weise'
-                      - 'Billy Stockwell'
-                      - 'Avery Lotz'
-                      - 'Rebecca Rubin'
-                      - 'Daniel Payne'
-                      - 'Brandon Widder'
-                      - 'Gary Fineout'
-                      - 'MATTHEW LEE'
-                      - 'Jesse Cohen'
-                      - 'Gizmodo Deals'
-                      - 'Daniel Lavelle'
-                      - 'Yohannes Lowe'
-                      - 'Andrew Sparrow'
-                      - 'Jakub Krupa'
-                      - 'Will Magee'
-                      - 'John Brewin'
-                      - 'Will Unwin'
-                      - 'Chris Stein'
-                      - 'Martin Belam'
-                      - 'Alex Sutton'
-                      - 'Jessica Murray Midlands correspondent'
-                      - 'Hannah Al-Othman North of England correspondent'
-                      - 'Anna Betts'
-                      - 'Catherine Shoard'
-                      - 'Ana Swanson'
-                      - 'Keith Bradsher'
-                      - 'Patricia Cohen'
-                      - 'Erica L. Green'
-                      - 'Carol Rosenberg'
-                      - 'Eric Schmitt'
-                      - 'Michael Crowley'
-                      - 'Annie Correal'
-                      - 'Jon Caramanica'
-                      - 'Joe Coscarelli'
-                      - 'Caryn Ganz'
-                      - 'Jon Pareles'
-                      - 'Lindsay Zoladz'
-                      - 'Vanessa Friedman'
-                      - 'Patrick Kingsley'
-                      - 'Jenny Vrentas'
-                      - 'Mitch Smith'
-                      - 'Erin Schaff'
-                      - 'Soumya Karlamangla'
-                      - 'Mimi Dwyer'
-                      - 'Carl Zimmer'
-                      - 'Claire Moses'
-                      - 'Isabella Kwai'
-                      - 'Christine Hauser'
-                      - 'John Yoon'
-                      - 'Tim Balk'
-                      - 'Emmanuel Morgan'
-                      - 'Gail Collins'
-                      - 'Bret Stephens'
-                      - 'Abrahm Lustgarten'
-                      - 'Catherine Porter'
-                      - 'Ségolène Le Stradic'
-                      - 'Troy Closson'
-                      - 'J. David Goodman'
-                      - 'Katrina Miller'
-                      - 'José Bautista'
-                      - 'Amelia Nierenberg'
-                      - 'Matt Stevens'
-                    items:
-                      type: string
-      tags:
-        - Endpoints
-      security: []
-  /api/articles:
-    get:
-      summary: ''
-      operationId: getApiArticles
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  current_page: 1
                   data:
-                    -
-                      id: 17
-                      title: 'Netanyahu on US visit as Hamas says it is ready to negotiate phase two of ceasefire – Middle East crisis live'
-                      description: null
-                      url: 'https://www.theguardian.com/world/live/2025/feb/03/middle-east-crisis-live-benjamin-netanyahu-israel-gaza-ceasefire-donald-trump'
-                      image: 'https://media.guim.co.uk/a18271bda488f2f0ee5861668d403ec200bb0fb1/0_72_1600_960/500.jpg'
-                      source: Guardian
-                      author: 'Daniel Lavelle, Yohannes Lowe'
-                      category: 'Middle East crisis live, Israel, Gaza, Hamas, Donald Trump, Benjamin Netanyahu, Palestinian territories, US news, World news'
-                      published_at: '2025-02-03 17:40:27'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 18
-                      title: 'Keir Starmer says he does not accept UK has to choose between US and EU – UK politics live'
-                      description: null
-                      url: 'https://www.theguardian.com/politics/live/2025/feb/03/keir-starmer-europe-brexit-donald-trump-latest-politics-news-updates-live'
-                      image: 'https://media.guim.co.uk/2887d8133d6ac1b5b4438a9c679516e2d9e64cf6/160_427_4811_2887/500.jpg'
-                      source: Guardian
-                      author: 'Andrew Sparrow'
-                      category: 'Politics, UK news, Politics live with Andrew Sparrow, Keir Starmer, Brexit, Labour, Conservatives, European Union, Donald Trump, Trade policy, Foreign policy, Trump administration, Europe, Donald Tusk, Bridget Phillipson, Education, Schools, Ofsted, Greenland, Commonwealth of Nations, King Charles III, Kemi Badenoch, US news, US politics, Monarchy, Green party, Proportional representation'
-                      published_at: '2025-02-03 17:40:13'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 19
-                      title: 'EU ready to react to ‘unnecessary and stupid’ tariffs threatened by Trump, leaders say – Europe live'
-                      description: null
-                      url: 'https://www.theguardian.com/world/live/2025/feb/03/eu-europe-emmanuel-macron-donald-trump-defence-spending-latest-news-updates'
-                      image: 'https://media.guim.co.uk/c1632236dc46fa8784595cf0b37bf6b4e55bf5d0/0_183_6242_3745/500.jpg'
-                      source: Guardian
-                      author: 'Jakub Krupa'
-                      category: 'Europe live with Jakub Krupa, Europe, World news, Emmanuel Macron, International trade, Global economy'
-                      published_at: '2025-02-03 17:40:02'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 20
-                      title: 'Transfer deadline day: Tel heading to Tottenham, González, Félix, Ferguson news and latest moves – live'
-                      description: null
-                      url: 'https://www.theguardian.com/football/live/2025/feb/03/transfer-deadline-day-rashford-tel-chilwell-disasi-live'
-                      image: 'https://media.guim.co.uk/450845bbc1f321af070ee1db704826774f7a516d/278_694_5429_3258/500.jpg'
-                      source: Guardian
-                      author: 'Will Magee, John Brewin, Will Unwin'
-                      category: 'Transfer window, Football, Sport, Premier League, European club football, Manchester United'
-                      published_at: '2025-02-03 17:37:15'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 21
-                      title: 'Trump pauses plan to impose 25% tariff on Mexico after Sheinbaum agrees to deploy troops to southern US border – live'
-                      description: null
-                      url: 'https://www.theguardian.com/us-news/live/2025/feb/03/donald-trump-trade-tariffs-eu-mexico-canada-china-us-politics-live'
-                      image: 'https://media.guim.co.uk/07367dde2fb75d5b9f548a8c1f253c1796dbb0de/1_0_2998_1800/500.jpg'
-                      source: Guardian
-                      author: 'Chris Stein, Martin Belam'
-                      category: 'Trump administration, US politics live with Chris Stein, US politics live, US news, World news, Donald Trump, Mexico, Canada, China, European Union, US politics, Republicans'
-                      published_at: '2025-02-03 17:35:29'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 22
-                      title: 'Caroline Reid obituary'
-                      description: null
-                      url: 'https://www.theguardian.com/education/2025/feb/03/caroline-reid-obituary'
-                      image: 'https://media.guim.co.uk/d61bec28813c6e43366ee953d9de4af976d02ddf/0_736_2173_1303/500.jpg'
-                      source: Guardian
-                      author: 'Alex Sutton'
-                      category: 'Social work, Other lives, Brighton, University of East Anglia, Children'
-                      published_at: '2025-02-03 17:32:58'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 23
-                      title: '‘Free pint when Forest score!’: pub loses £1,500 after seven-goal rampage'
-                      description: null
-                      url: 'https://www.theguardian.com/uk-news/2025/feb/03/free-pint-when-forest-score-pub-loses-1500-after-seven-goal-rampage'
-                      image: 'https://media.guim.co.uk/87e47a145ab0aeec92bcaefffec38635db83ee8c/0_68_1600_960/500.jpg'
-                      source: Guardian
-                      author: 'Jessica Murray Midlands correspondent'
-                      category: 'Nottingham, Nottingham Forest, UK news, Football'
-                      published_at: '2025-02-03 17:28:20'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 24
-                      title: 'Boy, 15, dies after stabbing incident at Sheffield school'
-                      description: null
-                      url: 'https://www.theguardian.com/uk-news/2025/feb/03/boy-detained-teenager-stabbed-school-sheffield'
-                      image: 'https://media.guim.co.uk/f8f7c3f0523b5779c0a40064a2219a017ac05486/0_216_3196_1918/500.jpg'
-                      source: Guardian
-                      author: 'Hannah Al-Othman North of England correspondent'
-                      category: 'UK news, England'
-                      published_at: '2025-02-03 17:28:18'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 25
-                      title: 'US hospitals suspend healthcare for transgender youth after Trump order'
-                      description: null
-                      url: 'https://www.theguardian.com/us-news/2025/feb/03/trans-youth-healthcare-hospitals-trump'
-                      image: 'https://media.guim.co.uk/caedcfe3e692dced4eaa950041218f9f3c0e1b34/0_313_6048_3629/500.jpg'
-                      source: Guardian
-                      author: 'Anna Betts'
-                      category: 'Trump administration, US news, Donald Trump, Transgender, LGBTQ+ rights, Health, Children, US politics'
-                      published_at: '2025-02-03 17:14:53'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                    -
-                      id: 26
-                      title: 'Cate Blanchett: lack of change in Hollywood after #MeToo ‘quite distressing’'
-                      description: null
-                      url: 'https://www.theguardian.com/world/2025/feb/03/cate-blanchett-lack-of-change-in-hollywood-after-metoo-quite-distressing'
-                      image: 'https://media.guim.co.uk/be7e1295b54a160e0c331e839735fc01b8a8e812/59_86_4011_2407/500.jpg'
-                      source: Guardian
-                      author: 'Catherine Shoard'
-                      category: 'Cate Blanchett, #MeToo movement, Film, Culture, Harvey Weinstein'
-                      published_at: '2025-02-03 17:13:17'
-                      created_at: '2025-02-03T17:40:38.000000Z'
-                      updated_at: '2025-02-03T17:40:38.000000Z'
-                  first_page_url: 'http://127.0.0.1:8000/api/articles?page=1'
-                  from: 1
-                  last_page: 5
-                  last_page_url: 'http://127.0.0.1:8000/api/articles?page=5'
-                  links:
-                    -
-                      url: null
-                      label: '&laquo; Previous'
-                      active: false
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=1'
-                      label: '1'
-                      active: true
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=2'
-                      label: '2'
-                      active: false
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=3'
-                      label: '3'
-                      active: false
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=4'
-                      label: '4'
-                      active: false
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=5'
-                      label: '5'
-                      active: false
-                    -
-                      url: 'http://127.0.0.1:8000/api/articles?page=2'
-                      label: 'Next &raquo;'
-                      active: false
-                  next_page_url: 'http://127.0.0.1:8000/api/articles?page=2'
-                  path: 'http://127.0.0.1:8000/api/articles'
-                  per_page: 10
-                  prev_page_url: null
-                  to: 10
-                  total: 48
-                properties:
-                  current_page:
-                    type: integer
-                    example: 1
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 17
-                        title: 'Netanyahu on US visit as Hamas says it is ready to negotiate phase two of ceasefire – Middle East crisis live'
-                        description: null
-                        url: 'https://www.theguardian.com/world/live/2025/feb/03/middle-east-crisis-live-benjamin-netanyahu-israel-gaza-ceasefire-donald-trump'
-                        image: 'https://media.guim.co.uk/a18271bda488f2f0ee5861668d403ec200bb0fb1/0_72_1600_960/500.jpg'
-                        source: Guardian
-                        author: 'Daniel Lavelle, Yohannes Lowe'
-                        category: 'Middle East crisis live, Israel, Gaza, Hamas, Donald Trump, Benjamin Netanyahu, Palestinian territories, US news, World news'
-                        published_at: '2025-02-03 17:40:27'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 18
-                        title: 'Keir Starmer says he does not accept UK has to choose between US and EU – UK politics live'
-                        description: null
-                        url: 'https://www.theguardian.com/politics/live/2025/feb/03/keir-starmer-europe-brexit-donald-trump-latest-politics-news-updates-live'
-                        image: 'https://media.guim.co.uk/2887d8133d6ac1b5b4438a9c679516e2d9e64cf6/160_427_4811_2887/500.jpg'
-                        source: Guardian
-                        author: 'Andrew Sparrow'
-                        category: 'Politics, UK news, Politics live with Andrew Sparrow, Keir Starmer, Brexit, Labour, Conservatives, European Union, Donald Trump, Trade policy, Foreign policy, Trump administration, Europe, Donald Tusk, Bridget Phillipson, Education, Schools, Ofsted, Greenland, Commonwealth of Nations, King Charles III, Kemi Badenoch, US news, US politics, Monarchy, Green party, Proportional representation'
-                        published_at: '2025-02-03 17:40:13'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 19
-                        title: 'EU ready to react to ‘unnecessary and stupid’ tariffs threatened by Trump, leaders say – Europe live'
-                        description: null
-                        url: 'https://www.theguardian.com/world/live/2025/feb/03/eu-europe-emmanuel-macron-donald-trump-defence-spending-latest-news-updates'
-                        image: 'https://media.guim.co.uk/c1632236dc46fa8784595cf0b37bf6b4e55bf5d0/0_183_6242_3745/500.jpg'
-                        source: Guardian
-                        author: 'Jakub Krupa'
-                        category: 'Europe live with Jakub Krupa, Europe, World news, Emmanuel Macron, International trade, Global economy'
-                        published_at: '2025-02-03 17:40:02'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 20
-                        title: 'Transfer deadline day: Tel heading to Tottenham, González, Félix, Ferguson news and latest moves – live'
-                        description: null
-                        url: 'https://www.theguardian.com/football/live/2025/feb/03/transfer-deadline-day-rashford-tel-chilwell-disasi-live'
-                        image: 'https://media.guim.co.uk/450845bbc1f321af070ee1db704826774f7a516d/278_694_5429_3258/500.jpg'
-                        source: Guardian
-                        author: 'Will Magee, John Brewin, Will Unwin'
-                        category: 'Transfer window, Football, Sport, Premier League, European club football, Manchester United'
-                        published_at: '2025-02-03 17:37:15'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 21
-                        title: 'Trump pauses plan to impose 25% tariff on Mexico after Sheinbaum agrees to deploy troops to southern US border – live'
-                        description: null
-                        url: 'https://www.theguardian.com/us-news/live/2025/feb/03/donald-trump-trade-tariffs-eu-mexico-canada-china-us-politics-live'
-                        image: 'https://media.guim.co.uk/07367dde2fb75d5b9f548a8c1f253c1796dbb0de/1_0_2998_1800/500.jpg'
-                        source: Guardian
-                        author: 'Chris Stein, Martin Belam'
-                        category: 'Trump administration, US politics live with Chris Stein, US politics live, US news, World news, Donald Trump, Mexico, Canada, China, European Union, US politics, Republicans'
-                        published_at: '2025-02-03 17:35:29'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 22
-                        title: 'Caroline Reid obituary'
-                        description: null
-                        url: 'https://www.theguardian.com/education/2025/feb/03/caroline-reid-obituary'
-                        image: 'https://media.guim.co.uk/d61bec28813c6e43366ee953d9de4af976d02ddf/0_736_2173_1303/500.jpg'
-                        source: Guardian
-                        author: 'Alex Sutton'
-                        category: 'Social work, Other lives, Brighton, University of East Anglia, Children'
-                        published_at: '2025-02-03 17:32:58'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 23
-                        title: '‘Free pint when Forest score!’: pub loses £1,500 after seven-goal rampage'
-                        description: null
-                        url: 'https://www.theguardian.com/uk-news/2025/feb/03/free-pint-when-forest-score-pub-loses-1500-after-seven-goal-rampage'
-                        image: 'https://media.guim.co.uk/87e47a145ab0aeec92bcaefffec38635db83ee8c/0_68_1600_960/500.jpg'
-                        source: Guardian
-                        author: 'Jessica Murray Midlands correspondent'
-                        category: 'Nottingham, Nottingham Forest, UK news, Football'
-                        published_at: '2025-02-03 17:28:20'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 24
-                        title: 'Boy, 15, dies after stabbing incident at Sheffield school'
-                        description: null
-                        url: 'https://www.theguardian.com/uk-news/2025/feb/03/boy-detained-teenager-stabbed-school-sheffield'
-                        image: 'https://media.guim.co.uk/f8f7c3f0523b5779c0a40064a2219a017ac05486/0_216_3196_1918/500.jpg'
-                        source: Guardian
-                        author: 'Hannah Al-Othman North of England correspondent'
-                        category: 'UK news, England'
-                        published_at: '2025-02-03 17:28:18'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 25
-                        title: 'US hospitals suspend healthcare for transgender youth after Trump order'
-                        description: null
-                        url: 'https://www.theguardian.com/us-news/2025/feb/03/trans-youth-healthcare-hospitals-trump'
-                        image: 'https://media.guim.co.uk/caedcfe3e692dced4eaa950041218f9f3c0e1b34/0_313_6048_3629/500.jpg'
-                        source: Guardian
-                        author: 'Anna Betts'
-                        category: 'Trump administration, US news, Donald Trump, Transgender, LGBTQ+ rights, Health, Children, US politics'
-                        published_at: '2025-02-03 17:14:53'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                      -
-                        id: 26
-                        title: 'Cate Blanchett: lack of change in Hollywood after #MeToo ‘quite distressing’'
-                        description: null
-                        url: 'https://www.theguardian.com/world/2025/feb/03/cate-blanchett-lack-of-change-in-hollywood-after-metoo-quite-distressing'
-                        image: 'https://media.guim.co.uk/be7e1295b54a160e0c331e839735fc01b8a8e812/59_86_4011_2407/500.jpg'
-                        source: Guardian
-                        author: 'Catherine Shoard'
-                        category: 'Cate Blanchett, #MeToo movement, Film, Culture, Harvey Weinstein'
-                        published_at: '2025-02-03 17:13:17'
-                        created_at: '2025-02-03T17:40:38.000000Z'
-                        updated_at: '2025-02-03T17:40:38.000000Z'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 17
-                        title:
+                    type: object
+                    properties:
+                      user_id:
+                        type: integer
+                        example: 1
+                      preferred_sources:
+                        type: array
+                        example:
+                          - 'BBC News'
+                          - CNN
+                        items:
                           type: string
-                          example: 'Netanyahu on US visit as Hamas says it is ready to negotiate phase two of ceasefire – Middle East crisis live'
-                        description:
+                      preferred_categories:
+                        type: array
+                        example:
+                          - Technology
+                          - Business
+                        items:
                           type: string
-                          example: null
-                        url:
+                      preferred_authors:
+                        type: array
+                        example:
+                          - 'John Doe'
+                          - 'Jane Smith'
+                        items:
                           type: string
-                          example: 'https://www.theguardian.com/world/live/2025/feb/03/middle-east-crisis-live-benjamin-netanyahu-israel-gaza-ceasefire-donald-trump'
-                        image:
-                          type: string
-                          example: 'https://media.guim.co.uk/a18271bda488f2f0ee5861668d403ec200bb0fb1/0_72_1600_960/500.jpg'
-                        source:
-                          type: string
-                          example: Guardian
-                        author:
-                          type: string
-                          example: 'Daniel Lavelle, Yohannes Lowe'
-                        category:
-                          type: string
-                          example: 'Middle East crisis live, Israel, Gaza, Hamas, Donald Trump, Benjamin Netanyahu, Palestinian territories, US news, World news'
-                        published_at:
-                          type: string
-                          example: '2025-02-03 17:40:27'
-                        created_at:
-                          type: string
-                          example: '2025-02-03T17:40:38.000000Z'
-                        updated_at:
-                          type: string
-                          example: '2025-02-03T17:40:38.000000Z'
-                  first_page_url:
-                    type: string
-                    example: 'http://127.0.0.1:8000/api/articles?page=1'
-                  from:
-                    type: integer
-                    example: 1
-                  last_page:
-                    type: integer
-                    example: 5
-                  last_page_url:
-                    type: string
-                    example: 'http://127.0.0.1:8000/api/articles?page=5'
-                  links:
-                    type: array
-                    example:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=2'
-                        label: '2'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=3'
-                        label: '3'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=4'
-                        label: '4'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=5'
-                        label: '5'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/articles?page=2'
-                        label: 'Next &raquo;'
-                        active: false
-                    items:
-                      type: object
-                      properties:
-                        url:
-                          type: string
-                          example: null
-                        label:
-                          type: string
-                          example: '&laquo; Previous'
-                        active:
-                          type: boolean
-                          example: false
-                  next_page_url:
-                    type: string
-                    example: 'http://127.0.0.1:8000/api/articles?page=2'
-                  path:
-                    type: string
-                    example: 'http://127.0.0.1:8000/api/articles'
-                  per_page:
-                    type: integer
-                    example: 10
-                  prev_page_url:
-                    type: string
-                    example: null
-                  to:
-                    type: integer
-                    example: 10
-                  total:
-                    type: integer
-                    example: 48
-      tags:
-        - Endpoints
-      security: []
-  /api/personalized-feed:
-    get:
-      summary: ''
-      operationId: getApiPersonalizedFeed
-      description: ''
-      parameters: []
-      responses:
-        401:
+        404:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: Unauthenticated.
+                  message: 'No preferences found'
                 properties:
                   message:
                     type: string
-                    example: Unauthenticated.
+                    example: 'No preferences found'
       tags:
-        - Endpoints
-      security: []
+        - 'User Preferences'
 tags:
   -
     name: Authentication
     description: ''
   -
     name: Endpoints
+    description: ''
+  -
+    name: Filters
+    description: ''
+  -
+    name: News
+    description: ''
+  -
+    name: 'User Preferences'
     description: ''
