@@ -1,0 +1,59 @@
+
+services:
+  # Laravel Backend Service
+  backend:
+    build: ./backend-news
+    container_name: news_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: mysql
+    volumes:
+      - ./backend-news:/var/www/html
+      - ./backend-news/.env.example:/var/www/html/.env
+    depends_on:
+      - mysql
+    command: >
+      sh -c "while ! nc -z mysql 3306; do
+             echo 'Waiting for MySQL...';
+             sleep 5;
+           done;
+           php artisan migrate && php artisan news:fetch && php artisan serve --host 0.0.0.0 --port 8000"
+
+  # React Frontend Service
+  frontend:
+    build: ./frontend-news
+    container_name: news_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend-news:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
+  # MySQL Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=caching_sha2_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+# Volumes
+volumes:
+  mysql_data:

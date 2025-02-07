@@ -1,0 +1,763 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/register:
+    post:
+      summary: 'Register a new user.'
+      operationId: registerANewUser
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User registered successfully!'
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                  access_token: 1|zXW8y0...
+                  token_type: Bearer
+                properties:
+                  message:
+                    type: string
+                    example: 'User registered successfully!'
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                  access_token:
+                    type: string
+                    example: 1|zXW8y0...
+                  token_type:
+                    type: string
+                    example: Bearer
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The full name of the user.'
+                  example: 'John Doe'
+                  nullable: false
+                email:
+                  type: string
+                  description: 'The email address of the user. Must be unique.'
+                  example: johndoe@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: "The user's password. Minimum 8 characters."
+                  example: secret123
+                  nullable: false
+                password_confirmation:
+                  type: string
+                  description: 'Must match the password.'
+                  example: secret123
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/v1/login:
+    post:
+      summary: 'Authenticate and log in a user.'
+      operationId: authenticateAndLogInAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Login successful!'
+                  user:
+                    id: 1
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                  access_token: 1|zXW8y0...
+                  token_type: Bearer
+                properties:
+                  message:
+                    type: string
+                    example: 'Login successful!'
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                  access_token:
+                    type: string
+                    example: 1|zXW8y0...
+                  token_type:
+                    type: string
+                    example: Bearer
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Invalid credentials.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Invalid credentials.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Validation failed'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Validation failed'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: johndoe@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: 'The password of the user.'
+                  example: secret123
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/user:
+    get:
+      summary: 'Get the authenticated user.'
+      operationId: getTheAuthenticatedUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n\"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@gmail.com\",\n    \"email_verified_at\": \"2021-08-01T00:00:00.000000Z\",\n    \"created_at\": \"2021-08-01T00:00:00.000000Z\",\n    \"updated_at\": \"2021-08-01T00:00:00.000000Z\"\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Authentication
+  /api/v1/logout:
+    post:
+      summary: 'Log out the authenticated user.'
+      operationId: logOutTheAuthenticatedUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Logged out successfully.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Logged out successfully.'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Authentication
+  /api/v1/filters/categories:
+    get:
+      summary: 'Get all unique categories.'
+      operationId: getAllUniqueCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  categories:
+                    - Technology
+                    - Health
+                    - Business
+                    - Sports
+                properties:
+                  categories:
+                    type: array
+                    example:
+                      - Technology
+                      - Health
+                      - Business
+                      - Sports
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Filters
+      security: []
+  /api/v1/filters/sources:
+    get:
+      summary: 'Get all unique sources.'
+      operationId: getAllUniqueSources
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  sources:
+                    - 'BBC News'
+                    - Reuters
+                    - TechCrunch
+                    - CNN
+                properties:
+                  sources:
+                    type: array
+                    example:
+                      - 'BBC News'
+                      - Reuters
+                      - TechCrunch
+                      - CNN
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Filters
+      security: []
+  /api/v1/filters/authors:
+    get:
+      summary: 'Get all unique authors.'
+      operationId: getAllUniqueAuthors
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  authors:
+                    - 'John Doe'
+                    - 'Jane Smith'
+                    - 'Michael Johnson'
+                properties:
+                  authors:
+                    type: array
+                    example:
+                      - 'John Doe'
+                      - 'Jane Smith'
+                      - 'Michael Johnson'
+                    items:
+                      type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error message'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error message'
+      tags:
+        - Filters
+      security: []
+  /api/v1/personalized-feed:
+    get:
+      summary: 'Get a personalized news feed based on user preferences.'
+      operationId: getAPersonalizedNewsFeedBasedOnUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"AI Innovations in 2024\",\n      \"category\": \"Technology\",\n      \"source\": \"TechCrunch\",\n      \"published_at\": \"2024-02-01\"\n    }\n  ],\n  \"links\": { ... },\n  \"meta\": { ... }\n}"
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: Unauthorized
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error details'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error details'
+      tags:
+        - News
+  /api/v1/articles:
+    get:
+      summary: 'Search for news articles.'
+      operationId: searchForNewsArticles
+      description: ''
+      parameters:
+        -
+          in: query
+          name: keyword
+          description: 'Search keyword in title or description.'
+          example: '"technology"'
+          required: false
+          schema:
+            type: string
+            description: 'Search keyword in title or description.'
+            example: '"technology"'
+            nullable: false
+        -
+          in: query
+          name: category
+          description: 'Filter by category.'
+          example: '"Business"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by category.'
+            example: '"Business"'
+            nullable: false
+        -
+          in: query
+          name: source
+          description: 'Filter by source.'
+          example: '"BBC News"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by source.'
+            example: '"BBC News"'
+            nullable: false
+        -
+          in: query
+          name: author
+          description: 'Filter by author name.'
+          example: '"John Doe"'
+          required: false
+          schema:
+            type: string
+            description: 'Filter by author name.'
+            example: '"John Doe"'
+            nullable: false
+        -
+          in: query
+          name: start_date
+          description: 'date Filter articles published after this date.'
+          example: '"2024-01-01"'
+          required: false
+          schema:
+            type: string
+            description: 'date Filter articles published after this date.'
+            example: '"2024-01-01"'
+            nullable: false
+        -
+          in: query
+          name: end_date
+          description: 'date Filter articles published before this date.'
+          example: '"2024-01-31"'
+          required: false
+          schema:
+            type: string
+            description: 'date Filter articles published before this date.'
+            example: '"2024-01-31"'
+            nullable: false
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"Latest Business Trends\",\n      \"category\": \"Business\",\n      \"source\": \"BBC News\",\n      \"author\": \"John Doe\",\n      \"published_at\": \"2024-01-15\"\n    }\n  ],\n  \"links\": { ... },\n  \"meta\": { ... }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Something went wrong'
+                  error: 'Server error details'
+                properties:
+                  message:
+                    type: string
+                    example: 'Something went wrong'
+                  error:
+                    type: string
+                    example: 'Server error details'
+      tags:
+        - News
+      security: []
+  /api/v1/user/preferences:
+    post:
+      summary: 'Update user preferences.'
+      operationId: updateUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Preferences updated successfully'
+                  data:
+                    user_id: 1
+                    preferred_sources:
+                      - 'BBC News'
+                      - CNN
+                    preferred_categories:
+                      - Technology
+                      - Business
+                    preferred_authors:
+                      - 'John Doe'
+                      - 'Jane Smith'
+                properties:
+                  message:
+                    type: string
+                    example: 'Preferences updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      user_id:
+                        type: integer
+                        example: 1
+                      preferred_sources:
+                        type: array
+                        example:
+                          - 'BBC News'
+                          - CNN
+                        items:
+                          type: string
+                      preferred_categories:
+                        type: array
+                        example:
+                          - Technology
+                          - Business
+                        items:
+                          type: string
+                      preferred_authors:
+                        type: array
+                        example:
+                          - 'John Doe'
+                          - 'Jane Smith'
+                        items:
+                          type: string
+      tags:
+        - 'User Preferences'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                preferred_sources:
+                  type: array
+                  description: 'Optional list of preferred news sources.'
+                  example:
+                    - 'BBC News'
+                    - CNN
+                  items:
+                    type: string
+                    nullable: true
+                preferred_categories:
+                  type: array
+                  description: 'Optional list of preferred categories.'
+                  example:
+                    - Technology
+                    - Business
+                  items:
+                    type: string
+                    nullable: true
+                preferred_authors:
+                  type: array
+                  description: 'Optional list of preferred authors.'
+                  example:
+                    - 'John Doe'
+                    - 'Jane Smith'
+                  items:
+                    type: string
+                    nullable: true
+    get:
+      summary: 'Retrieve user preferences.'
+      operationId: retrieveUserPreferences
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    user_id: 1
+                    preferred_sources:
+                      - 'BBC News'
+                      - CNN
+                    preferred_categories:
+                      - Technology
+                      - Business
+                    preferred_authors:
+                      - 'John Doe'
+                      - 'Jane Smith'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      user_id:
+                        type: integer
+                        example: 1
+                      preferred_sources:
+                        type: array
+                        example:
+                          - 'BBC News'
+                          - CNN
+                        items:
+                          type: string
+                      preferred_categories:
+                        type: array
+                        example:
+                          - Technology
+                          - Business
+                        items:
+                          type: string
+                      preferred_authors:
+                        type: array
+                        example:
+                          - 'John Doe'
+                          - 'Jane Smith'
+                        items:
+                          type: string
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No preferences found'
+                properties:
+                  message:
+                    type: string
+                    example: 'No preferences found'
+      tags:
+        - 'User Preferences'
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Filters
+    description: ''
+  -
+    name: News
+    description: ''
+  -
+    name: 'User Preferences'
+    description: ''

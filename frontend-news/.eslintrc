@@ -1,0 +1,16 @@
+{
+   "parser": "@typescript-eslint/parser",
+   "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+   },
+   "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "eslint:recommended"
+   ],
+   "rules": {
+      "@typescript-eslint/no-unused-vars": "off", // Disable unused variable check
+      "no-unused-vars": "off" // Disable the regular no-unused-vars rule as well
+   }
+}
